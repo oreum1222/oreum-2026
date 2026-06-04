@@ -221,6 +221,26 @@ body {
 }
 
 /* ── MANAGEMENT STRIP ── */
+/* ── 평가원 총평 배너 ── */
+.tp-banner{max-width:900px;margin:30px auto 4px;padding:0 24px}
+.tp-card{background:linear-gradient(135deg,#1f2c18,#2d3a24 60%,#3d4d32);border:1px solid var(--gold);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.tp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent)}
+.tp-head{display:flex;align-items:center;gap:14px;padding:18px 24px;cursor:pointer;user-select:none;transition:background .2s}
+.tp-head:hover{background:rgba(201,168,76,.08)}
+.tp-badge{flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.04em;color:#2d3a24;background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:6px 13px;border-radius:999px;box-shadow:0 2px 10px rgba(201,168,76,.3)}
+.tp-ttl{font-family:'Nanum Myeongjo',serif;font-size:clamp(16px,2.6vw,21px);font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1.35}
+.tp-ttl small{display:block;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:500;color:var(--gold-light);margin-top:4px;letter-spacing:0}
+.tp-chev{margin-left:auto;flex-shrink:0;color:var(--gold-light);font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tp-chev .ar{display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1);font-size:12px}
+.tp-card.open .tp-chev .ar{transform:rotate(180deg)}
+.tp-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1)}
+.tp-card.open .tp-body{max-height:760px}
+.tp-frame{border-top:1px solid rgba(201,168,76,.3);background:#0a0c10}
+.tp-frame iframe{width:100%;height:640px;border:0;display:block}
+.tp-full{display:block;text-align:center;padding:13px;font-size:12.5px;font-weight:600;color:var(--gold-light);text-decoration:none;background:#16201a;border-top:1px solid rgba(201,168,76,.2);letter-spacing:.02em}
+.tp-full:hover{color:#fff;background:#1f2c18}
+@media(max-width:768px){.tp-banner{padding:0 16px;margin-top:18px}.tp-head{padding:14px 16px;gap:10px}.tp-ttl{font-size:16px}.tp-card.open .tp-body{max-height:720px}.tp-frame iframe{height:600px}.tp-chev .tx{display:none}}
+
 .mgmt-strip {
   background: var(--warm-white);
   border-bottom: 1px solid var(--border);
@@ -908,6 +928,21 @@ body {
       </div></div>
     </div>
     <div style="text-align:right;margin-top:12px;font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:0.5px;">학원등록번호 제2474호</div>
+  </div>
+</div>
+
+<!-- 평가원 총평 배너 -->
+<div class="tp-banner">
+  <div class="tp-card" id="tpCard">
+    <div class="tp-head" onclick="this.parentNode.classList.toggle('open')">
+      <span class="tp-badge">NEW · 평가원</span>
+      <div class="tp-ttl">2027학년도 6월 평가원 총평<small>6월 모평 × 수능특강 연계 분석 · 눌러서 펼치기</small></div>
+      <span class="tp-chev"><span class="tx">분석 보기</span><span class="ar">▾</span></span>
+    </div>
+    <div class="tp-body">
+      <div class="tp-frame"><iframe src="yeongye-2027-06.html" title="2027학년도 6월 평가원 총평 · 수능특강 연계 분석" loading="lazy"></iframe></div>
+      <a href="yeongye-2027-06.html" target="_blank" class="tp-full">전체 화면으로 보기 ↗</a>
+    </div>
   </div>
 </div>
 
