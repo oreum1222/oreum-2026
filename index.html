@@ -8,34 +8,37 @@
 <meta property="og:title" content="[오름] 국어 · 2026 1학기 정규반 안내">
 <meta property="og:description" content="학교별 맞춤 내신 대비 · 전임 강사 · 체계적 관리 시스템으로 국어 실력의 근본적 향상을 이끕니다.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#4a5a3a">
+<meta name="theme-color" content="#0a0f0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --olive: #235a43;
-  --olive-light: #3f7d62;
-  --olive-pale: #e2ede8;
-  --gold: #c9a84c;
-  --gold-light: #f5e6b8;
-  --gold-dark: #a6882e;
-  --cream: #f7f6f1;
-  --warm-white: #fffefa;
-  --charcoal: #2c2c2c;
-  --text: #3a3a3a;
-  --text-light: #6b6b6b;
-  --border: #e5e0d5;
-  --red: #d94f4f;
-  --red-bg: #fef0f0;
-  --green: #4a8c5c;
-  --green-bg: #edf7f0;
-  --gray: #888;
-  --gray-bg: #f0eeea;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  /* 다크 딥포레스트그린 테마 (오름 약술 허브 톤) */
+  --olive: #6ee7a8;        /* 강조 텍스트/타이틀 — 다크 위 민트 */
+  --olive-light: #34d399;
+  --olive-pale: #13241b;   /* (구) 밝은 틴트 → 다크 소프트 틴트 */
+  --gold: #fbcf5b;         /* 다크용으로 밝힌 골드(앰버) */
+  --gold-light: #ffe7a6;
+  --gold-dark: #c9a84c;
+  --cream: #0a0f0c;        /* 페이지 배경 — 딥 니어블랙 그린 */
+  --warm-white: #0f1712;   /* 카드 배경 */
+  --charcoal: #f1f6f3;     /* (구) 진한 텍스트 → 밝게 */
+  --text: #e8f0ea;         /* 본문 텍스트 */
+  --text-light: #a7b6ad;   /* 보조 텍스트 */
+  --border: #1d2a23;       /* 라인 */
+  --red: #f0857f;
+  --red-bg: #2a1618;
+  --green: #34d399;
+  --green-bg: #0e2a1d;
+  --gray: #8a988f;
+  --gray-bg: #16201a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.45);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.55);
   --radius: 16px;
   --radius-sm: 10px;
+  --card: #0f1712;         /* 카드 표면 */
+  --surface2: #13211a;     /* 한 단계 밝은 표면 */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,7 +56,7 @@ body {
 /* ── HERO ── */
 .hero {
   position: relative;
-  background: linear-gradient(155deg, #0f3527 0%, #1a4a37 50%, #235a43 100%);
+  background: linear-gradient(160deg, #0a0f0c 0%, #0e1d15 55%, #11281d 100%);
   color: white;
   padding: 72px 24px 56px;
   overflow: hidden;
@@ -65,7 +68,7 @@ body {
   right: -15%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(52,211,153,0.10) 0%, transparent 60%);
   border-radius: 50%;
 }
 .hero::after {
@@ -75,7 +78,7 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, rgba(110,231,168,0.55), transparent);
 }
 .hero-reg {
   position: absolute;
@@ -94,7 +97,8 @@ body {
 }
 .hero-badge {
   display: inline-block;
-  background: var(--gold);
+  background: rgba(52,211,153,0.12);
+  border: 1px solid rgba(110,231,168,0.40);
   color: var(--olive);
   font-family: 'Nanum Myeongjo', serif;
   font-size: 14px;
@@ -116,7 +120,7 @@ body {
 }
 .hero h1 em {
   font-style: normal;
-  color: var(--gold);
+  color: var(--olive);
   position: relative;
 }
 .hero h1 em::after {
@@ -126,7 +130,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--gold);
+  background: var(--olive);
   opacity: 0.5;
 }
 .hero-sub {
@@ -152,7 +156,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 36px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--olive);
   line-height: 1;
 }
 .hero-stat-label {
@@ -213,40 +217,77 @@ body {
   text-decoration: none;
   transition: all 0.2s;
   letter-spacing: 0.3px;
-  background: white;
+  background: var(--card);
   color: var(--olive);
-  border: 2px solid var(--gold);
+  border: 1.5px solid rgba(110,231,168,0.35);
 }
 .channel-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  background: var(--gold-light);
+  background: rgba(52,211,153,0.15);
 }
 .channel-blog, .channel-youtube, .channel-kakao {
-  background: white;
+  background: var(--card);
   color: var(--olive);
 }
 
 /* ── MANAGEMENT STRIP ── */
 /* ── 평가원 총평 배너 ── */
 .tp-banner{max-width:900px;margin:30px auto 4px;padding:0 24px}
-.tp-card{background:linear-gradient(135deg,#0e3023,#163d2d 60%,#235a43);border:1px solid var(--gold);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
-.tp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent)}
+.tp-card{background:linear-gradient(135deg,#0c1f17,#123023 50%,#163d2d);border:1px solid rgba(110,231,168,0.35);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);position:relative;transition:box-shadow .28s ease,border-color .28s ease}
+.tp-card:hover{border-color:rgba(110,231,168,0.6);box-shadow:0 0 0 1px rgba(110,231,168,0.25),0 10px 36px rgba(52,211,153,0.22),0 0 48px rgba(52,211,153,0.12)}
+.tp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(110,231,168,0.65),transparent)}
 .tp-head{display:flex;align-items:center;gap:14px;padding:18px 24px;cursor:pointer;user-select:none;transition:background .2s}
-.tp-head:hover{background:rgba(201,168,76,.08)}
-.tp-badge{flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.04em;color:#0e3023;background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:6px 13px;border-radius:999px;box-shadow:0 2px 10px rgba(201,168,76,.3)}
+.tp-head:hover{background:rgba(52,211,153,.09)}
+.tp-badge{flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.04em;color:#06281a;background:linear-gradient(135deg,#6ee7a8,#34d399);padding:6px 13px;border-radius:999px;box-shadow:0 2px 12px rgba(52,211,153,.4)}
 .tp-ttl{font-family:'Nanum Myeongjo',serif;font-size:clamp(16px,2.6vw,21px);font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1.35}
-.tp-ttl small{display:block;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:500;color:var(--gold-light);margin-top:4px;letter-spacing:0}
-.tp-chev{margin-left:auto;flex-shrink:0;color:var(--gold-light);font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tp-ttl small{display:block;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:500;color:#a7b6ad;margin-top:4px;letter-spacing:0}
+.tp-chev{margin-left:auto;flex-shrink:0;color:var(--olive);font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;white-space:nowrap}
 .tp-chev .ar{display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1);font-size:12px}
 .tp-card.open .tp-chev .ar{transform:rotate(180deg)}
 .tp-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1)}
 .tp-card.open .tp-body{max-height:760px}
-.tp-frame{border-top:1px solid rgba(201,168,76,.3);background:#0a0c10}
+.tp-frame{border-top:1px solid rgba(110,231,168,.25);background:#0a0c10}
 .tp-frame iframe{width:100%;height:640px;border:0;display:block}
-.tp-full{display:block;text-align:center;padding:13px;font-size:12.5px;font-weight:600;color:var(--gold-light);text-decoration:none;background:#16201a;border-top:1px solid rgba(201,168,76,.2);letter-spacing:.02em}
+.tp-full{display:block;text-align:center;padding:13px;font-size:12.5px;font-weight:600;color:var(--olive);text-decoration:none;background:#16201a;border-top:1px solid rgba(110,231,168,.18);letter-spacing:.02em}
 .tp-full:hover{color:#fff;background:#1f2c18}
 @media(max-width:768px){.tp-banner{padding:0 16px;margin-top:18px}.tp-head{padding:14px 16px;gap:10px}.tp-ttl{font-size:16px}.tp-card.open .tp-body{max-height:720px}.tp-frame iframe{height:600px}.tp-chev .tx{display:none}}
+
+/* ── 호버 글로우 (마우스 올릴 때 민트 발광) ── */
+.course-card, .mgmt-card, .teacher-photo, .channel-btn, .cta-float,
+.filter-btn, .schedule-chip, .tp-full, .stat-card, .card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .2s ease;
+}
+.course-card:hover, .mgmt-card:hover, .card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(110,231,168,0.45);
+  box-shadow: 0 0 0 1px rgba(110,231,168,0.30), 0 12px 34px rgba(52,211,153,0.22), 0 0 50px rgba(52,211,153,0.12);
+}
+.teacher-photo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px rgba(110,231,168,0.55), 0 12px 30px rgba(52,211,153,0.32), 0 0 48px rgba(52,211,153,0.18) !important;
+}
+.channel-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(110,231,168,0.6) !important;
+  background: rgba(52,211,153,0.15) !important;
+  box-shadow: 0 0 0 1px rgba(110,231,168,0.25), 0 6px 22px rgba(52,211,153,0.30), 0 0 30px rgba(52,211,153,0.16) !important;
+}
+.cta-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(110,231,168,0.45), 0 12px 34px rgba(52,211,153,0.45), 0 0 60px rgba(52,211,153,0.32) !important;
+}
+.filter-btn:hover {
+  border-color: rgba(110,231,168,0.55);
+  box-shadow: 0 0 18px rgba(52,211,153,0.25);
+}
+.schedule-chip:hover {
+  border-color: rgba(110,231,168,0.45);
+  box-shadow: 0 0 16px rgba(52,211,153,0.20);
+}
+.tp-full:hover {
+  box-shadow: inset 0 0 24px rgba(52,211,153,0.18);
+}
 
 .mgmt-strip {
   background: var(--warm-white);
@@ -272,7 +313,7 @@ body {
   gap: 16px;
 }
 .mgmt-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 20px;
@@ -294,8 +335,8 @@ body {
   height: 3px;
 }
 .mgmt-card:nth-child(1)::before { background: var(--olive); }
-.mgmt-card:nth-child(2)::before { background: var(--gold); }
-.mgmt-card:nth-child(3)::before { background: var(--red); }
+.mgmt-card:nth-child(2)::before { background: var(--olive); }
+.mgmt-card:nth-child(3)::before { background: var(--olive); }
 .mgmt-icon {
   width: 40px;
   height: 40px;
@@ -307,12 +348,12 @@ body {
   font-size: 18px;
 }
 .mgmt-card:nth-child(1) .mgmt-icon { background: var(--olive-pale); }
-.mgmt-card:nth-child(2) .mgmt-icon { background: var(--gold-light); }
-.mgmt-card:nth-child(3) .mgmt-icon { background: var(--red-bg); }
+.mgmt-card:nth-child(2) .mgmt-icon { background: var(--olive-pale); }
+.mgmt-card:nth-child(3) .mgmt-icon { background: var(--olive-pale); }
 .mgmt-icon svg { width: 22px; height: 22px; display: block; }
 .mgmt-card:nth-child(1) .mgmt-icon svg { stroke: var(--olive); }
-.mgmt-card:nth-child(2) .mgmt-icon svg { stroke: var(--gold); }
-.mgmt-card:nth-child(3) .mgmt-icon svg { stroke: var(--red); }
+.mgmt-card:nth-child(2) .mgmt-icon svg { stroke: var(--olive); }
+.mgmt-card:nth-child(3) .mgmt-icon svg { stroke: var(--olive); }
 .mgmt-title {
   font-size: 13px;
   font-weight: 600;
@@ -370,7 +411,7 @@ body {
   padding: 8px 18px;
   border: 1px solid var(--border);
   border-radius: 24px;
-  background: white;
+  background: var(--card);
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 13px;
   font-weight: 500;
@@ -385,7 +426,7 @@ body {
 }
 .filter-btn.active {
   background: var(--olive);
-  color: white;
+  color: #06281a;
   border-color: var(--olive);
 }
 
@@ -396,7 +437,7 @@ body {
   gap: 18px;
 }
 .course-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -478,12 +519,12 @@ body {
   font-weight: 500;
 }
 .feature-tag.naesin {
-  background: #eef3ff;
-  color: #3d6bc6;
+  background: rgba(52,211,153,0.14);
+  color: #6ee7a8;
 }
 .feature-tag.focus {
-  background: #fff8ec;
-  color: #b8860b;
+  background: rgba(251,207,91,0.14);
+  color: var(--gold);
 }
 .card-schedules {
   display: flex;
@@ -502,8 +543,8 @@ body {
   background: var(--cream);
 }
 .schedule-chip.chip-closed {
-  background: #f9f5f5;
-  border-color: #e0d0d0;
+  background: #16201a;
+  border-color: #2c4234;
 }
 .schedule-chip.chip-closed .schedule-time {
   text-decoration: line-through;
@@ -595,7 +636,7 @@ body {
   gap: 14px;
 }
 .tt-col {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -656,7 +697,7 @@ body {
 
 /* ── FOOTER ── */
 .footer {
-  background: var(--charcoal);
+  background: #0c1410;
   color: rgba(255,255,255,0.6);
   padding: 36px 24px;
   text-align: center;
@@ -674,7 +715,7 @@ body {
   bottom: 24px;
   right: 24px;
   background: var(--olive);
-  color: white;
+  color: #06281a;
   padding: 14px 24px;
   border-radius: 50px;
   font-size: 14px;
@@ -695,12 +736,12 @@ body {
 }
 
 /* ── SCHOOL COLORS ── */
-.school-군포고 { --sc: #3a7256; }
-.school-군포중앙고 { --sc: #3d6bc6; }
-.school-산본고 { --sc: #c9a84c; }
-.school-수리고 { --sc: #d94f4f; }
-.school-용호고 { --sc: #8b5cf6; }
-.school-흥진고 { --sc: #e67e22; }
+.school-군포고 { --sc: #34d399; }
+.school-군포중앙고 { --sc: #34d399; }
+.school-산본고 { --sc: #34d399; }
+.school-수리고 { --sc: #34d399; }
+.school-용호고 { --sc: #34d399; }
+.school-흥진고 { --sc: #34d399; }
 
 /* ── ANIMATIONS ── */
 @keyframes fadeDown {
@@ -792,14 +833,14 @@ body {
 .teacher-sm {
   width: 100px;
   height: 125px;
-  background: white;
-  border: 2px solid var(--gold);
+  background: var(--card);
+  border: 2px solid rgba(110,231,168,0.40);
 }
 .teacher-lg {
   width: 140px;
   height: 195px;
-  background: white;
-  border: 2px solid var(--gold);
+  background: var(--card);
+  border: 2px solid var(--olive);
 }
 .teacher-label {
   font-size: 11px;
@@ -815,10 +856,10 @@ body {
   letter-spacing: 1px;
 }
 .director-label {
-  color: var(--gold-light);
+  color: var(--olive);
 }
 .director-label strong {
-  color: var(--gold);
+  color: var(--olive);
 }
 
 @media (max-width: 768px) {
@@ -876,7 +917,7 @@ body {
         <div class="hero-badge">2026 1학기 정규반</div>
         <h1><em>[오름]</em> 국어<br>정규반 안내</h1>
         <p class="hero-sub">학교별 맞춤 내신 대비와 체계적인 관리 시스템으로<br>국어 실력의 근본적인 향상을 이끌어냅니다.</p>
-        <div style="width:40px;height:1px;background:var(--gold);margin:28px 0;opacity:0.6"></div>
+        <div style="width:40px;height:1px;background:var(--olive);margin:28px 0;opacity:0.6"></div>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-num">6</div>
@@ -1204,17 +1245,18 @@ const courses = [
   }
 ];
 
+// 색감 통일: 전 과목 동일 에메랄드 그린(허브 톤) — 알록달록 제거
 const schoolColors = {
-  "고3 정규반": "#1a6b4a",
-  "군포고": "#3a7256",
-  "군포중앙고": "#3d6bc6",
-  "산본고": "#c9a84c",
-  "수리고": "#d94f4f",
-  "용호고": "#8b5cf6",
-  "흥진고": "#e67e22",
-  "약술형 논술": "#7b5ea7",
-  "중2 정규반": "#2a7ab5",
-  "중3 정규반": "#2a7ab5"
+  "고3 정규반": "#34d399",
+  "군포고": "#34d399",
+  "군포중앙고": "#34d399",
+  "산본고": "#34d399",
+  "수리고": "#34d399",
+  "용호고": "#34d399",
+  "흥진고": "#34d399",
+  "약술형 논술": "#34d399",
+  "중2 정규반": "#34d399",
+  "중3 정규반": "#34d399"
 };
 
 
