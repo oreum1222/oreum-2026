@@ -290,21 +290,25 @@ body {
 }
 
 /* ── YOUTUBE VIDEOS ── */
-.yt-strip { background: var(--warm-white); border-bottom: 1px solid var(--border); }
-.yt-inner { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
-.yt-title { font-family:'Noto Serif KR',serif; font-size:22px; font-weight:700; color:var(--charcoal); }
-.yt-sub { font-size:13px; color:var(--text-light); margin:6px 0 22px; }
-.yt-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; }
-.yt-card { position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; cursor:pointer; background:#000; border:1px solid var(--border); box-shadow:var(--shadow-sm); transition:transform .25s ease, box-shadow .25s ease; }
-.yt-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--gold); }
+.yt-strip { background: linear-gradient(160deg,#0e3225 0%,#16402f 55%,#1d4a37 100%); border-top:1px solid rgba(201,168,76,.18); border-bottom:1px solid rgba(201,168,76,.18); }
+.yt-inner { max-width: 1280px; margin: 0 auto; padding: 50px 36px; }
+.yt-head { display:flex; align-items:center; gap:13px; margin-bottom:28px; flex-wrap:wrap; }
+.yt-dot { width:13px; height:13px; border-radius:50%; background:#7fd9ad; box-shadow:0 0 0 4px rgba(127,217,173,.16); flex-shrink:0; }
+.yt-title { font-family:'Nanum Myeongjo',serif; font-size:clamp(20px,2.3vw,27px); font-weight:800; color:#fff; letter-spacing:-.01em; }
+.yt-more { font-size:14px; font-weight:600; color:rgba(255,255,255,.62); text-decoration:none; transition:color .2s; }
+.yt-more:hover { color:var(--gold-light); }
+.yt-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.yt-card { position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; cursor:pointer; background:#000; box-shadow:0 12px 32px rgba(0,0,0,.38); transition:transform .25s ease, box-shadow .25s ease; }
+.yt-card:hover { transform:translateY(-5px); box-shadow:0 20px 44px rgba(0,0,0,.5); }
 .yt-card img { width:100%; height:100%; object-fit:cover; display:block; }
-.yt-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.12); transition:background .2s; }
-.yt-card:hover .yt-play { background:rgba(0,0,0,.26); }
-.yt-play svg { width:54px; height:54px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.45)); transition:transform .2s; }
-.yt-card:hover .yt-play svg { transform:scale(1.08); }
+.yt-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.08); transition:background .2s; }
+.yt-card:hover .yt-play { background:rgba(0,0,0,.20); }
+.yt-play svg { width:70px; height:70px; filter:drop-shadow(0 3px 9px rgba(0,0,0,.55)); transition:transform .2s; }
+.yt-card:hover .yt-play svg { transform:scale(1.09); }
 .yt-card iframe { width:100%; height:100%; border:0; display:block; }
-@media(max-width:640px){ .yt-inner{padding:28px 16px} .yt-title{font-size:19px} .yt-grid{grid-template-columns:1fr 1fr; gap:10px} }
-@media(max-width:380px){ .yt-grid{grid-template-columns:1fr} }
+@media(max-width:1000px){ .yt-grid{ grid-template-columns:1fr 1fr; gap:18px; } }
+@media(max-width:640px){ .yt-inner{padding:36px 18px} .yt-grid{ gap:13px; } .yt-play svg{ width:54px; height:54px; } .yt-head{ gap:10px; margin-bottom:22px; } }
+@media(max-width:430px){ .yt-grid{ grid-template-columns:1fr; } }
 
 .mgmt-strip {
   background: var(--warm-white);
@@ -1048,8 +1052,11 @@ body {
 <!-- YOUTUBE VIDEOS -->
 <div class="yt-strip">
   <div class="yt-inner">
-    <div class="yt-title">오름 국어 영상</div>
-    <div class="yt-sub">썸네일을 누르면 영상이 바로 재생됩니다.</div>
+    <div class="yt-head">
+      <span class="yt-dot"></span>
+      <span class="yt-title">김가경 [오름] 국어 원장 직강</span>
+      <a class="yt-more" href="https://youtube.com/channel/UCrEYhXaFqlcnxn1wpsiUKEg?si=Je9i2pkk72-MnrAd" target="_blank" rel="noopener">· 유튜브 바로가기</a>
+    </div>
     <div class="yt-grid">
       <div class="yt-card" data-yt="1s62A28kxVY"><img src="https://i.ytimg.com/vi/1s62A28kxVY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/1s62A28kxVY/hqdefault.jpg'" loading="lazy" alt="오름 국어 영상 1"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 0 34 0 34 0S12 0 7.1 2a8 8 0 0 0-5.6 5.7A83 83 0 0 0 0 24a83 83 0 0 0 1.5 16.3 8 8 0 0 0 5.6 5.7C12 48 34 48 34 48s22 0 26.9-2a8 8 0 0 0 5.6-5.7A83 83 0 0 0 68 24a83 83 0 0 0-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10z" fill="#fff"/></svg></span></div>
       <div class="yt-card" data-yt="It2uv0BDeo0"><img src="https://i.ytimg.com/vi/It2uv0BDeo0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/It2uv0BDeo0/hqdefault.jpg'" loading="lazy" alt="오름 국어 영상 2"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 0 34 0 34 0S12 0 7.1 2a8 8 0 0 0-5.6 5.7A83 83 0 0 0 0 24a83 83 0 0 0 1.5 16.3 8 8 0 0 0 5.6 5.7C12 48 34 48 34 48s22 0 26.9-2a8 8 0 0 0 5.6-5.7A83 83 0 0 0 68 24a83 83 0 0 0-1.5-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10z" fill="#fff"/></svg></span></div>
