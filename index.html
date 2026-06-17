@@ -424,9 +424,26 @@ body {
 
 .filter-row {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.filter-group {
+  display: flex;
+  align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+}
+.filter-glabel {
+  flex-shrink: 0;
+  min-width: 52px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+}
+@media (max-width: 560px) {
+  .filter-glabel { width: 100%; min-width: 0; margin-bottom: -3px; }
 }
 .filter-btn {
   padding: 8px 18px;
@@ -791,7 +808,8 @@ body {
   .card-schedules { flex-direction: column; }
   .schedule-chip { justify-content: flex-start; }
   .tt-grid { grid-template-columns: 1fr 1fr; }
-  .filter-row { gap: 6px; }
+  .filter-row { gap: 10px; }
+  .filter-group { gap: 6px; }
   .filter-btn { padding: 7px 12px; font-size: 11px; }
   .cta-float { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 13px; }
   .section-title { font-size: 19px; }
@@ -1083,19 +1101,28 @@ document.querySelectorAll('.yt-card').forEach(function(c){
   <div class="section-sub">학교와 학년으로 필터링하여 원하시는 강좌를 찾아보세요.</div>
 
   <div class="filter-row" id="filters">
-    <button class="filter-btn active" data-filter="all">전체</button>
-    <button class="filter-btn" data-filter="1">1학년</button>
-    <button class="filter-btn" data-filter="2">2학년</button>
-    <button class="filter-btn" data-filter="3">3학년</button>
-    <button class="filter-btn" data-filter="논술">논술</button>
-    <button class="filter-btn" data-filter="중등">중등부</button>
-    <button class="filter-btn" data-filter="군포고">군포고</button>
-    <button class="filter-btn" data-filter="군포중앙고">군포중앙고</button>
-    <button class="filter-btn" data-filter="산본고">산본고</button>
-    <button class="filter-btn" data-filter="수리고">수리고</button>
-    <button class="filter-btn" data-filter="용호고">용호고</button>
-    <button class="filter-btn" data-filter="흥진고">흥진고</button>
-    <button class="filter-btn" data-filter="open">모집 중만</button>
+    <div class="filter-group">
+      <span class="filter-glabel">학년별</span>
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn" data-filter="1">고1</button>
+      <button class="filter-btn" data-filter="2">고2</button>
+      <button class="filter-btn" data-filter="3">고3</button>
+      <button class="filter-btn" data-filter="중등">중등부</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-glabel">학교별</span>
+      <button class="filter-btn" data-filter="군포고">군포고</button>
+      <button class="filter-btn" data-filter="군포중앙고">군포중앙고</button>
+      <button class="filter-btn" data-filter="산본고">산본고</button>
+      <button class="filter-btn" data-filter="수리고">수리고</button>
+      <button class="filter-btn" data-filter="용호고">용호고</button>
+      <button class="filter-btn" data-filter="흥진고">흥진고</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-glabel">기타</span>
+      <button class="filter-btn" data-filter="논술">논술</button>
+      <button class="filter-btn" data-filter="open">모집 중만</button>
+    </div>
   </div>
 
   <div class="courses-grid" id="coursesGrid"></div>
