@@ -1151,42 +1151,6 @@ document.querySelectorAll('.yt-card').forEach(function(c){
 });
 </script>
 
-<!-- COURSE LIST -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-title">강좌 안내</div>
-    <div class="section-count" id="courseCount"></div>
-  </div>
-  <div class="section-sub">학교와 학년으로 필터링하여 원하시는 강좌를 찾아보세요.</div>
-
-  <div class="filter-row" id="filters">
-    <div class="filter-group">
-      <span class="filter-glabel">학년별</span>
-      <button class="filter-btn active" data-filter="all">전체</button>
-      <button class="filter-btn" data-filter="1">고1</button>
-      <button class="filter-btn" data-filter="2">고2</button>
-      <button class="filter-btn" data-filter="3">고3</button>
-      <button class="filter-btn" data-filter="중등">중등부</button>
-    </div>
-    <div class="filter-group">
-      <span class="filter-glabel">학교별</span>
-      <button class="filter-btn" data-filter="군포고">군포고</button>
-      <button class="filter-btn" data-filter="군포중앙고">군포중앙고</button>
-      <button class="filter-btn" data-filter="산본고">산본고</button>
-      <button class="filter-btn" data-filter="수리고">수리고</button>
-      <button class="filter-btn" data-filter="용호고">용호고</button>
-      <button class="filter-btn" data-filter="흥진고">흥진고</button>
-    </div>
-    <div class="filter-group">
-      <span class="filter-glabel">기타</span>
-      <button class="filter-btn" data-filter="논술">논술</button>
-      <button class="filter-btn" data-filter="open">모집 중만</button>
-    </div>
-  </div>
-
-  <div class="courses-grid" id="coursesGrid"></div>
-</div>
-
 <!-- SUMMER SPECIAL TIMETABLE -->
 <div class="sst-section">
   <div class="sst-head"><span class="sst-dot"></span><div class="sst-title">여름방학 특강 시간표</div></div>
@@ -1238,6 +1202,42 @@ document.querySelectorAll('.yt-card').forEach(function(c){
   Object.keys(C).forEach(function(t){var sp=document.createElement("span");sp.className="sst-lg";sp.innerHTML='<span class="sw" style="background:'+C[t]+'"></span>'+t;lg.appendChild(sp);});
 })();
 </script>
+
+<!-- COURSE LIST -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">강좌 안내</div>
+    <div class="section-count" id="courseCount"></div>
+  </div>
+  <div class="section-sub">학교와 학년으로 필터링하여 원하시는 강좌를 찾아보세요.</div>
+
+  <div class="filter-row" id="filters">
+    <div class="filter-group">
+      <span class="filter-glabel">학년별</span>
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn" data-filter="1">고1</button>
+      <button class="filter-btn" data-filter="2">고2</button>
+      <button class="filter-btn" data-filter="3">고3</button>
+      <button class="filter-btn" data-filter="중등">중등부</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-glabel">학교별</span>
+      <button class="filter-btn" data-filter="군포고">군포고</button>
+      <button class="filter-btn" data-filter="군포중앙고">군포중앙고</button>
+      <button class="filter-btn" data-filter="산본고">산본고</button>
+      <button class="filter-btn" data-filter="수리고">수리고</button>
+      <button class="filter-btn" data-filter="용호고">용호고</button>
+      <button class="filter-btn" data-filter="흥진고">흥진고</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-glabel">기타</span>
+      <button class="filter-btn" data-filter="논술">논술</button>
+      <button class="filter-btn" data-filter="open">모집 중만</button>
+    </div>
+  </div>
+
+  <div class="courses-grid" id="coursesGrid"></div>
+</div>
 
 <!-- TIMETABLE -->
 <div class="timetable-section">
