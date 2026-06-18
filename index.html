@@ -345,6 +345,31 @@ body {
 @media(max-width:640px){ .yt-inner{padding:36px 18px} .yt-grid{ gap:13px; } .yt-play svg{ width:54px; height:54px; } .yt-head{ gap:10px; margin-bottom:22px; } }
 @media(max-width:430px){ .yt-grid{ grid-template-columns:1fr; } }
 
+/* ── 수강생 후기 (마퀴) ── */
+.rev-band{padding:42px 0 10px}
+.rev-inner{max-width:1180px;margin:0 auto;padding:0 24px}
+.rev-head{display:flex;align-items:center;gap:11px;margin-bottom:5px}
+.rev-dot{width:12px;height:12px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 4px rgba(110,231,168,.16)}
+.rev-title{font-family:'Nanum Myeongjo',serif;font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--charcoal)}
+.rev-sub{font-size:13px;color:var(--text-light);margin:5px 0 20px 23px}
+.rev-sub a{color:var(--olive);text-decoration:none;font-weight:600}
+.rev-sub a:hover{text-decoration:underline}
+.rev-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rev-track{display:flex;gap:16px;width:max-content;animation:revscroll 46s linear infinite}
+.rev-marquee:hover .rev-track{animation-play-state:paused}
+@keyframes revscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rev-card{flex:0 0 320px;width:320px;background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:16px 17px;display:flex;flex-direction:column;min-height:172px}
+.rev-card .rtop{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.rev-card .rnick{font-size:13px;font-weight:700;color:var(--text)}
+.rev-card .rdate{font-size:11px;color:var(--text-light);opacity:.7;margin-left:auto}
+.rev-card .rheart{font-size:10.5px;font-weight:700;color:#ff8fb0;background:rgba(255,143,176,.12);padding:2px 7px;border-radius:999px}
+.rev-card .rbody{font-size:13px;line-height:1.65;color:var(--text);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.rev-card .rkw{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
+.rev-card .rkw span{font-size:10.5px;color:var(--olive);background:rgba(110,231,168,.10);border:1px solid rgba(110,231,168,.18);padding:2px 8px;border-radius:7px}
+.rev-band.rev-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rev-band.rev-reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rev-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.rev-card.dup{display:none}.rev-band.rev-reveal{opacity:1;transform:none;transition:none}}
+
 .mgmt-strip {
   background: var(--warm-white);
   border-bottom: 1px solid var(--border);
@@ -1098,6 +1123,42 @@ body {
     </div>
   </div>
 </div>
+
+<!-- 수강생 후기 (네이버 플레이스) -->
+<div class="rev-band rev-reveal" id="revBand">
+  <div class="rev-inner">
+    <div class="rev-head"><span class="rev-dot"></span><span class="rev-title">수강생 · 학부모 후기</span></div>
+    <div class="rev-sub">네이버 플레이스 실제 후기 · <a href="https://map.naver.com/p/search/오름 국어 학원/place/1493012091" target="_blank" rel="noopener">네이버에서 더 보기 ↗</a></div>
+  </div>
+  <div class="rev-marquee"><div class="rev-track" id="revTrack"></div></div>
+</div>
+<script>
+(function(){
+  var reviews=[
+   {n:"seo****",d:"5.15",h:0,b:"선생님이 수업 넘 잘하시고 학생들도 잘 챙겨주셔서 여기 다닌 이후로 성적이 완전 많이 올랐어요!",k:["선생님이 열정적이에요","수업이 체계적이에요"]},
+   {n:"im****",d:"5.2",h:0,b:"선생님이 열정적으로 봐주십니다. 성적쑥쑥🌸 국어 성적이 오름🔥🔥",k:["선생님 실력이 좋아요","면학 분위기가 좋아요"]},
+   {n:"cpa****",d:"5.2",h:0,b:"너무 좋아요!! 선생님이 너무 열정적이세요 ~~",k:["맞춤 지도를 잘해줘요","선생님이 열정적이에요"]},
+   {n:"sus****",d:"5.2",h:0,b:"산본에 있는데도 평촌에서 수업 들으러 왔습니다! 독서 지문 읽을 때, 문학 갈래별 행동 강령을 잘 정립해주셔서 좋았어요. 내신 클리닉·숙제검사도 꼼꼼합니다.",k:["수업이 체계적이에요","선생님 실력이 좋아요"]},
+   {n:"둠칫****",d:"5.2",h:0,b:"열심히 잘 가르쳐주십니다.",k:["맞춤 지도를 잘해줘요","학생과 소통을 잘해요"]},
+   {n:"haa****",d:"5.2",h:0,b:"학생 이해력에 맞게 하나하나 자세히 설명해주셔서 좋아요!! 수능 대비뿐 아니라 학교별 내신 대비까지 꼼꼼히 챙겨주십니다☺️",k:["맞춤 지도를 잘해줘요","학생 관리가 철저해요"]},
+   {n:"유섭****",d:"5.2",h:0,b:"내신부터 수능까지 다 챙겨주시고 정말 잘 가르쳐주셔서 좋아요!! 덕분에 성적이 많이 올랐습니다😀",k:["선생님이 열정적이에요","선생님 실력이 좋아요"]},
+   {n:"jin****",d:"5.1",h:0,b:"선생님께서 재미있게 수업해주셔서 너무 좋아요🥰",k:["수업이 체계적이에요","자습하기 좋아요"]},
+   {n:"os****",d:"5.1",h:0,b:"국어 푸는 방법을 잡아 성적을 올렸어요. 자료도 많이 주십니다! 1학년 이후로 못 받던 내신 1등급을, 오름 국어학원 다니고 높은 등수로 다시 받았어요!",k:["수업이 체계적이에요","선생님 실력이 좋아요"]},
+   {n:"하니****",d:"4.24",h:1,b:"선생님들께서 열정적이고 체계적·구체적으로 잘 알려주십니다! 과천에서 거리가 먼데도 이동시간이 아깝지 않을 만큼 만족스러운 강의력. 국어 가뿐하게, 경쾌하게! 언제나 오름입니다",k:["맞춤 지도를 잘해줘요","시설이 깔끔해요"]}
+  ];
+  function card(r,dup){
+    var c=document.createElement("div");c.className="rev-card"+(dup?" dup":"");
+    c.innerHTML='<div class="rtop"><span class="rnick">'+r.n+'</span>'+(r.h?'<span class="rheart">♥ 가경T</span>':'')+'<span class="rdate">'+r.d+'</span></div>'
+      +'<div class="rbody">'+r.b+'</div>'
+      +'<div class="rkw">'+r.k.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';
+    return c;
+  }
+  var track=document.getElementById("revTrack");
+  reviews.forEach(function(r){track.appendChild(card(r,false));});
+  reviews.forEach(function(r){track.appendChild(card(r,true));});
+  try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in");});},{threshold:.12});io.observe(document.getElementById("revBand"));}catch(e){document.getElementById("revBand").classList.add("in");}
+})();
+</script>
 
 <!-- MANAGEMENT SYSTEM -->
 <div class="mgmt-strip">
