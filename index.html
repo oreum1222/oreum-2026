@@ -717,6 +717,28 @@ body {
 .sst-cls .bd.t{background:rgba(251,207,91,.18);color:var(--gold)}
 @media(max-width:920px){.sst-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.sst-grid{grid-template-columns:1fr}}
+/* 여름특강 v2 (요일 컬럼 · 시간대 그룹 · 기간/주차/유료 배지) */
+.si-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;align-items:start}
+.si-dh{display:flex;align-items:center;gap:9px;padding-bottom:11px;margin-bottom:14px;border-bottom:2px solid var(--border)}
+.si-dname{font-family:'Noto Serif KR',serif;font-weight:700;font-size:16px;color:var(--text)}
+.si-dcnt{width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:rgba(255,255,255,.06);color:var(--text-light)}
+.si-dh.wknd .si-dname{color:var(--olive)}
+.si-dh.wknd .si-dcnt{background:rgba(110,231,168,.14);color:var(--olive)}
+.si-period{font-size:11.5px;font-weight:600;color:var(--text-light);margin:-6px 0 13px;padding-left:2px}
+.si-slot{margin-bottom:16px}.si-slot:last-child{margin-bottom:0}
+.si-time{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:8px;font-variant-numeric:tabular-nums}
+.si-blocks{display:flex;gap:9px}
+.si-block{flex:1;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s}
+.si-block:hover{transform:translateY(-3px);border-color:rgba(110,231,168,.4);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.si-subj{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14.5px;font-weight:700;color:var(--text)}
+.si-t{font-size:10.5px;font-weight:700;color:var(--olive);background:rgba(110,231,168,.14);padding:2px 8px;border-radius:6px}
+.si-tch{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--text-light);margin-top:8px}
+.si-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;line-height:1.5;white-space:nowrap}
+.si-wk{color:var(--text-light);background:rgba(255,255,255,.06)}
+.si-paid{color:var(--gold);background:rgba(251,207,91,.16)}
+@media(max-width:1000px){.si-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.si-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.si-grid{grid-template-columns:1fr}.si-blocks{flex-wrap:wrap}}
 
 .timetable-section {
   max-width: 900px;
@@ -1218,52 +1240,52 @@ document.querySelectorAll('.yt-card').forEach(function(c){
 <!-- SUMMER SPECIAL TIMETABLE -->
 <div class="sst-section">
   <div class="sst-head"><span class="sst-dot"></span><div class="sst-title">여름방학 특강 시간표</div></div>
-  <div class="sst-sub">강의 있는 요일만 표시 (수 · 금 · 토 · 일) · T = 수업 시간</div>
-  <div class="sst-legend" id="sstLegend"></div>
-  <div class="sst-grid" id="sstGrid"></div>
+  <div class="sst-sub">월 · 수 · 금 · 토 · 일 진행 · 같은 시간대 강좌는 나란히 표시 · T = 수업 시간</div>
+  <div id="sstGrid"></div>
 </div>
 <script>
 (function(){
-  var C={"가경T":"#fbcf5b","은규T":"#6ee7a8","지연T":"#5b9cf5","예담T":"#a78bfa","원철T":"#ff8a8a","고3 정규반":"#2dd4bf"};
-  // [요일, 강사, 과목, 시작, 종료, 강의실] — T는 시간으로 자동 계산
+  // {d:요일, t:강사, subj:과목, s:시작, e:종료, wk:주차(선택), paid:유료단과(선택)}
   var data=[
-    ["수","가경T","현대문법","10:00","13:30","2강의실"],
-    ["수","가경T","고전문법","14:00","17:30","2강의실"],
-    ["금","은규T","문학개념어","10:00","13:00","1강의실"],
-    ["금","은규T","고전문학","19:00","22:00","1강의실"],
-    ["금","고3 정규반","","19:00","22:00","2강의실"],
-    ["토","고3 정규반","","09:00","12:00","2강의실"],
-    ["토","은규T","고전문법","10:00","13:30","1강의실"],
-    ["토","예담T","고전문법","10:00","13:30","4강의실"],
-    ["토","은규T","고전문법","14:00","17:30","1강의실"],
-    ["토","은규T","현대문법","18:00","21:30","1강의실"],
-    ["일","지연T","고전문학","10:00","13:00","1강의실"],
-    ["일","은규T","독해심화","10:00","13:00","2강의실"],
-    ["일","원철T","약술논술","13:00","16:00","1강의실"],
-    ["일","은규T","독해기초","14:00","17:00","2강의실"]
+    {d:"월",t:"지연T",subj:"문학 심화",s:"10:00",e:"13:30",wk:"4주",paid:true},
+    {d:"월",t:"지연T",subj:"독해 쌩기초",s:"18:00",e:"21:30",wk:"4주",paid:true},
+    {d:"수",t:"가경T",subj:"현대문법",s:"10:00",e:"13:30"},
+    {d:"수",t:"가경T",subj:"고전문법",s:"14:00",e:"17:30"},
+    {d:"금",t:"은규T",subj:"문학개념어",s:"10:00",e:"13:00"},
+    {d:"금",t:"은규T",subj:"고전문학",s:"14:00",e:"17:00"},
+    {d:"금",t:"은규T",subj:"고전문학",s:"18:00",e:"21:00"},
+    {d:"토",t:"은규T",subj:"고전문법",s:"10:00",e:"13:30"},
+    {d:"토",t:"예담T",subj:"고전문법",s:"10:00",e:"13:30"},
+    {d:"토",t:"은규T",subj:"고전문법",s:"14:00",e:"17:30"},
+    {d:"토",t:"은규T",subj:"현대문법",s:"18:00",e:"21:30"},
+    {d:"일",t:"지연T",subj:"고전문학",s:"10:00",e:"13:00"},
+    {d:"일",t:"은규T",subj:"독해기초",s:"10:00",e:"13:00",wk:"6주"},
+    {d:"일",t:"원철T",subj:"약술논술",s:"13:00",e:"16:00"},
+    {d:"일",t:"은규T",subj:"독해심화",s:"14:00",e:"17:00",wk:"6주"},
+    {d:"일",t:"지연T",subj:"현대문법",s:"18:00",e:"21:30"}
   ];
+  var periods={"월":"유료 단과 · 오름패스 별도 · 4주","수":"7/22~8/12 · 4주","금":"7/17~8/7 · 4주","토":"7/11~8/29 · 8주","일":""};
   var toMin=function(t){var p=t.split(":");return (+p[0])*60+(+p[1]);};
   var fmtT=function(s,e){return ((toMin(e)-toMin(s))/60)+"T";};
-  var days=["수","금","토","일"];
-  var grid=document.getElementById("sstGrid");
+  var days=["월","수","금","토","일"];
+  var grid=document.getElementById("sstGrid"); grid.className="si-grid";
   days.forEach(function(day){
-    var items=data.filter(function(d){return d[0]===day;}).sort(function(a,b){return toMin(a[3])-toMin(b[3]);});
-    var col=document.createElement("div");col.className="sst-day";
-    col.innerHTML='<div class="sst-dh'+((day==="토"||day==="일")?" wknd":"")+'"><span class="wd">'+day+'요일</span><span class="cnt">'+items.length+'강좌</span></div>';
-    var b=document.createElement("div");b.className="sst-db";
-    items.forEach(function(d){
-      var tch=d[1],subj=d[2],s=d[3],e=d[4],room=d[5];
-      var el=document.createElement("div");el.className="sst-cls";el.style.setProperty("--c",C[tch]||"#6ee7a8");
-      el.innerHTML='<div class="tm">'+s+'–'+e+'</div>'
-        +'<div class="sj">'+(subj||tch)+'</div>'
-        +(subj?'<div class="tc">'+tch+'</div>':'')
-        +'<div class="mt"><span class="bd">'+room+'</span><span class="bd t">'+fmtT(s,e)+'</span></div>';
-      b.appendChild(el);
-    });
-    col.appendChild(b);grid.appendChild(col);
+    var items=data.filter(function(d){return d.d===day;}).sort(function(a,b){return toMin(a.s)-toMin(b.s);});
+    if(!items.length)return;
+    var wknd=(day==="토"||day==="일");
+    var head='<div class="si-dh'+(wknd?" wknd":"")+'"><span class="si-dname">'+day+'요일</span><span class="si-dcnt">'+items.length+'</span></div>';
+    var per=periods[day]?'<div class="si-period">'+periods[day]+'</div>':'';
+    var slots=[],idx={};
+    items.forEach(function(d){var key=d.s+"–"+d.e;if(idx[key]===undefined){idx[key]=slots.length;slots.push({s:d.s,e:d.e,list:[]});}slots[idx[key]].list.push(d);});
+    var body=slots.map(function(sl){
+      var blocks=sl.list.map(function(d){
+        var badges='';if(d.wk)badges+='<span class="si-badge si-wk">'+d.wk+'</span>';if(d.paid)badges+='<span class="si-badge si-paid">유료 단과</span>';
+        return '<div class="si-block"><div class="si-subj">'+d.subj+'<span class="si-t">'+fmtT(sl.s,sl.e)+'</span></div><div class="si-tch">'+d.t+badges+'</div></div>';
+      }).join("");
+      return '<div class="si-slot"><div class="si-time">'+sl.s+'–'+sl.e+'</div><div class="si-blocks">'+blocks+'</div></div>';
+    }).join("");
+    var colEl=document.createElement("div");colEl.className="si-day";colEl.innerHTML=head+per+body;grid.appendChild(colEl);
   });
-  var lg=document.getElementById("sstLegend");
-  Object.keys(C).forEach(function(t){var sp=document.createElement("span");sp.className="sst-lg";sp.innerHTML='<span class="sw" style="background:'+C[t]+'"></span>'+t;lg.appendChild(sp);});
 })();
 </script>
 
