@@ -724,7 +724,7 @@ body {
 @media(max-width:920px){.sst-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.sst-grid{grid-template-columns:1fr}}
 /* 여름특강 v2 (요일 컬럼 · 시간대 그룹 · 기간/주차/유료 배지) */
-.si-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;align-items:start}
+.si-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:15px;align-items:start}
 .si-dh{display:flex;align-items:center;gap:9px;padding-bottom:11px;margin-bottom:14px;border-bottom:2px solid var(--border)}
 .si-dname{font-family:'Noto Serif KR',serif;font-weight:700;font-size:16px;color:var(--text)}
 .si-dcnt{width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:rgba(255,255,255,.06);color:var(--text-light)}
@@ -733,7 +733,7 @@ body {
 .si-period{font-size:11.5px;font-weight:600;color:var(--text-light);margin:-6px 0 13px;padding-left:2px}
 .si-slot{margin-bottom:16px}.si-slot:last-child{margin-bottom:0}
 .si-time{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:8px;font-variant-numeric:tabular-nums}
-.si-blocks{display:flex;gap:9px}
+.si-blocks{display:flex;flex-direction:column;gap:9px}
 .si-block{flex:1;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s}
 .si-block:hover{transform:translateY(-3px);border-color:rgba(110,231,168,.4);box-shadow:0 12px 26px rgba(0,0,0,.4)}
 .si-subj{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14.5px;font-weight:700;color:var(--text)}
@@ -743,6 +743,18 @@ body {
 .si-wk{color:var(--text-light);background:rgba(255,255,255,.06)}
 .si-paid{color:var(--gold);background:rgba(251,207,91,.16)}
 .si-weekly{color:var(--olive);background:rgba(110,231,168,.14)}
+.si-mid{color:#b9a6e6;background:rgba(150,120,220,.16)}
+/* 개강·종강 팝오버(hover/탭) */
+.si-block{position:relative;cursor:pointer}
+.si-cal{position:absolute;top:11px;right:11px;color:var(--text-light);opacity:.38;transition:opacity .25s,color .25s}
+.si-block:hover .si-cal,.si-block:focus-within .si-cal,.si-block.show .si-cal{opacity:.9;color:var(--olive)}
+.si-when{position:absolute;left:50%;top:calc(100% + 10px);transform:translate(-50%,-6px);width:max-content;max-width:200px;text-align:center;
+  background:var(--card);color:var(--text);border:1px solid rgba(110,231,168,.4);
+  padding:9px 13px;border-radius:10px;font-size:12px;font-weight:600;line-height:1.55;
+  box-shadow:0 14px 32px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .22s,transform .22s;z-index:40;pointer-events:none}
+.si-when b{color:var(--olive);font-weight:800}
+.si-when::after{content:"";position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-bottom-color:rgba(110,231,168,.4)}
+.si-block:hover .si-when,.si-block:focus-within .si-when,.si-block.show .si-when{opacity:1;visibility:visible;transform:translate(-50%,0)}
 @media(max-width:1000px){.si-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.si-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:460px){.si-grid{grid-template-columns:1fr}.si-blocks{flex-wrap:wrap}}
@@ -1250,34 +1262,49 @@ document.querySelectorAll('.yt-card').forEach(function(c){
 <!-- SUMMER SPECIAL TIMETABLE -->
 <div class="sst-section" id="summer">
   <div class="sst-head"><span class="sst-dot"></span><div class="sst-title">여름방학 특강 시간표</div></div>
-  <div class="sst-sub">월 · 수 · 금 · 토 · 일 진행 · 같은 시간대 강좌는 나란히 표시 · T = 수업 시간</div>
+  <div class="sst-sub">월 · 수 · 목 · 금 · 토 · 일 진행 · T = 수업 시간 · 📅 <b style="color:var(--olive)">카드에 마우스를 올리거나(모바일: 톡 터치)</b> 수업별 개강·종강일 표시</div>
   <div id="sstGrid"></div>
 </div>
 <script>
 (function(){
-  // {d:요일, t:강사, subj:과목, s:시작, e:종료, wk:주차(선택), paid:유료단과(선택)}
+  // {d:요일, t:강사, subj:과목, s:시작, e:종료, p:개강~종강(hover 표시), paid, weekly}
   var data=[
-    {d:"월",t:"지연T",subj:"문학 심화",s:"10:00",e:"13:30",paid:true},
-    {d:"월",t:"지연T",subj:"독해 쌩기초",s:"18:00",e:"21:30",paid:true},
-    {d:"수",t:"가경T",subj:"현대문법",s:"10:00",e:"13:30"},
-    {d:"수",t:"가경T",subj:"고전문법",s:"14:00",e:"17:30"},
-    {d:"금",t:"은규T",subj:"문학개념어",s:"10:00",e:"13:00"},
-    {d:"금",t:"은규T",subj:"고전문학",s:"14:00",e:"17:00"},
-    {d:"금",t:"은규T",subj:"고전문학",s:"18:00",e:"21:00"},
-    {d:"토",t:"은규T",subj:"고전문법",s:"10:00",e:"13:30"},
-    {d:"토",t:"예담T",subj:"고전문법",s:"10:00",e:"13:30"},
-    {d:"토",t:"은규T",subj:"고전문법",s:"14:00",e:"17:30"},
-    {d:"토",t:"은규T",subj:"현대문법",s:"18:00",e:"21:30"},
-    {d:"일",t:"지연T",subj:"고전문학",s:"10:00",e:"13:00"},
-    {d:"일",t:"은규T",subj:"독해기초",s:"10:00",e:"13:00",tag:"6주 · 7/12~8/16"},
-    {d:"일",t:"원철T",subj:"약술논술",s:"13:00",e:"16:00",weekly:true},
-    {d:"일",t:"은규T",subj:"독해심화",s:"14:00",e:"17:00",tag:"6주 · 7/12~8/16"},
-    {d:"일",t:"지연T",subj:"현대문법",s:"18:00",e:"21:30"}
+    {d:"월",t:"지연T",subj:"문학 심화",s:"10:00",e:"13:30",paid:true,p:"7/20~8/10 · 4주"},
+    {d:"월",t:"지연T",subj:"독해 쌩기초",s:"18:00",e:"21:30",paid:true,p:"7/20~8/10 · 4주"},
+    {d:"수",t:"예담T",subj:"고전문학",s:"10:00",e:"13:00",p:"7/15~8/12 · 4주"},
+    {d:"수",t:"가경T",subj:"현대문법",s:"10:00",e:"13:30",p:"7/15~8/12 · 4주"},
+    {d:"수",t:"가경T",subj:"고전문법",s:"14:00",e:"17:30",p:"7/15~8/12 · 4주"},
+    {d:"수",t:"예담T",subj:"고전문법",s:"18:00",e:"21:30",p:"8주"},
+    {d:"목",t:"해솔T",subj:"문학개념어",s:"13:30",e:"16:30",p:"7주",mid:true},
+    {d:"목",t:"해솔T",subj:"문학개념어",s:"17:00",e:"20:00",p:"7주",mid:true},
+    {d:"금",t:"은규T",subj:"문학개념어",s:"10:00",e:"13:00",p:"7/17~8/7 · 4주"},
+    {d:"금",t:"은규T",subj:"고전문학",s:"14:00",e:"17:00",p:"7/17~8/7 · 4주"},
+    {d:"금",t:"은규T",subj:"고전문학",s:"18:00",e:"21:00",p:"7/17~8/7 · 4주"},
+    {d:"토",t:"은규T",subj:"고전문법",s:"10:00",e:"13:30",p:"7/11~8/29 · 8주"},
+    {d:"토",t:"예담T",subj:"고전문법",s:"10:00",e:"13:30",p:"7/11~8/29 · 8주"},
+    {d:"토",t:"은규T",subj:"고전문법",s:"14:00",e:"17:30",p:"7/11~8/29 · 8주"},
+    {d:"토",t:"은규T",subj:"현대문법",s:"18:00",e:"21:30",p:"7/11~8/29 · 8주"},
+    {d:"일",t:"지연T",subj:"고전문학",s:"10:00",e:"13:00",p:"7/12~8/16 · 6주"},
+    {d:"일",t:"은규T",subj:"독해기초",s:"10:00",e:"13:00",p:"7/12~8/16 · 6주"},
+    {d:"일",t:"원철T",subj:"약술논술",s:"13:00",e:"16:00",weekly:true,p:"매주 입반 · 상시 등록"},
+    {d:"일",t:"은규T",subj:"독해심화",s:"14:00",e:"17:00",p:"7/12~8/16 · 6주"},
+    {d:"일",t:"지연T",subj:"현대문법",s:"18:00",e:"21:30",p:"7/12~8/16 · 6주"}
   ];
-  var periods={"월":"유료 단과 · 오름패스 별도 · 7/20~8/10 · 4주","수":"7/15~8/12 · 4주","금":"7/17~8/7 · 4주","토":"7/11~8/29 · 8주","일":""};
+  var periods={"월":"유료 단과 · 오름패스 별도 · 7/20~8/10 · 4주","수":"수업별 기간 상이 · 카드 확인","목":"중등부 · 7주","금":"7/17~8/7 · 4주","토":"7/11~8/29 · 8주","일":"7/12~8/16 · 6주 · 약술 매주입반"};
   var toMin=function(t){var p=t.split(":");return (+p[0])*60+(+p[1]);};
   var fmtT=function(s,e){return ((toMin(e)-toMin(s))/60)+"T";};
-  var days=["월","수","금","토","일"];
+  var whenLabel=function(p){
+    if(!p)return "개강일 문의";
+    if(p.indexOf("~")>-1){
+      var seg=p.split("·").map(function(x){return x.trim();});
+      var rg=seg[0].split("~");
+      var extra=seg.slice(1).join(" · ");
+      return "개강 <b>"+rg[0]+"</b> · 종강 <b>"+rg[1]+"</b>"+(extra?"<br>"+extra:"");
+    }
+    return p;
+  };
+  var cal='<svg class="si-cal" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
+  var days=["월","수","목","금","토","일"];
   var grid=document.getElementById("sstGrid"); grid.className="si-grid";
   days.forEach(function(day){
     var items=data.filter(function(d){return d.d===day;}).sort(function(a,b){return toMin(a.s)-toMin(b.s);});
@@ -1289,12 +1316,23 @@ document.querySelectorAll('.yt-card').forEach(function(c){
     items.forEach(function(d){var key=d.s+"–"+d.e;if(idx[key]===undefined){idx[key]=slots.length;slots.push({s:d.s,e:d.e,list:[]});}slots[idx[key]].list.push(d);});
     var body=slots.map(function(sl){
       var blocks=sl.list.map(function(d){
-        var badges='';if(d.paid)badges+='<span class="si-badge si-paid">유료 단과</span>';if(d.weekly)badges+='<span class="si-badge si-weekly">매주 입반</span>';if(d.tag)badges+='<span class="si-badge si-wk">'+d.tag+'</span>';
-        return '<div class="si-block"><div class="si-subj">'+d.subj+'<span class="si-t">'+fmtT(sl.s,sl.e)+'</span></div><div class="si-tch">'+d.t+badges+'</div></div>';
+        var badges='';if(d.mid)badges+='<span class="si-badge si-mid">중등</span>';if(d.paid)badges+='<span class="si-badge si-paid">유료 단과</span>';if(d.weekly)badges+='<span class="si-badge si-weekly">매주 입반</span>';
+        return '<div class="si-block" tabindex="0">'+cal
+          +'<div class="si-subj">'+d.subj+'<span class="si-t">'+fmtT(sl.s,sl.e)+'</span></div>'
+          +'<div class="si-tch">'+d.t+badges+'</div>'
+          +'<div class="si-when">'+whenLabel(d.p)+'</div>'
+        +'</div>';
       }).join("");
       return '<div class="si-slot"><div class="si-time">'+sl.s+'–'+sl.e+'</div><div class="si-blocks">'+blocks+'</div></div>';
     }).join("");
     var colEl=document.createElement("div");colEl.className="si-day";colEl.innerHTML=head+per+body;grid.appendChild(colEl);
+  });
+  // 모바일: 카드 탭으로 개강·종강 팝오버 토글
+  grid.addEventListener("click",function(e){
+    var b=e.target.closest(".si-block");
+    var open=b&&b.classList.contains("show");
+    grid.querySelectorAll(".si-block.show").forEach(function(x){x.classList.remove("show");});
+    if(b&&!open)b.classList.add("show");
   });
 })();
 </script>
