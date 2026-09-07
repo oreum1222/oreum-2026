@@ -100,7 +100,7 @@ window.OREUM = {
   shell: function(active){
     var notice = document.getElementById('notice-bar');
     if(notice){
-      var msg = '[오름] 국어 · 2026 2학기 정규반 접수 중 &nbsp;·&nbsp; 학교별 맞춤 내신 대비 &nbsp;·&nbsp; 2027학년도 6월 평가원 총평 공개';
+      var msg = '[오름] 국어 · 2026 2학기 정규반 접수 중 &nbsp;·&nbsp; 학교별 맞춤 내신 대비 &nbsp;·&nbsp; 2027학년도 9월 모평 국어 총평 공개';
       notice.innerHTML = '<div class="nb-inner"><span class="nb-ico"><span class="material-symbols-outlined text-[18px]">campaign</span></span>'
         + '<span class="nb-vp"><span class="nb-track">'+msg+' &nbsp;&nbsp;&nbsp;&nbsp; '+msg+'</span></span>'
         + '<button class="nb-close" aria-label="공지 닫기" onclick="document.getElementById(\'notice-bar\').remove()"><span class="material-symbols-outlined text-[18px]">close</span></button></div>';
