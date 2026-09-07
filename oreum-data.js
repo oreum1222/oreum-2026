@@ -6,9 +6,9 @@ window.OREUM_FORM_URL = "https://forms.gle/rXrF8pKKrhbzo64V8";
 
 // --- 강사진 ---
 window.TEACHERS = [
-  { key:'gagyeong', name:'가경 T', role:'원장', head:true, short:'메가 출제 · 평가원 6회 만점',
+  { key:'gagyeong', name:'가경 T', role:'원장', head:true, short:'MEXX 대치 출강 · 메가 모의고사 출제',
     photo:'assets/profile-gagyeong.png',
-    desc:'메가스터디 수능 국어 모의고사를 출제하는 출제자 겸 강사. 국어국문학 전공, 10년 이상 현장 강의. 평가원의 출제 경향을 읽는 눈을 학생에게 이식합니다.' },
+    desc:'메가스터디 신규 브랜드 MEXX(대치) 출강. 메가스터디 수능 국어 모의고사를 출제하는 출제자 겸 강사. 국어국문학 전공, 10년 이상 현장 강의. 대치동에서 가르치는 그대로, 산본에서 가르칩니다.' },
   { key:'eungyu', name:'은규 T', role:'부원장', short:'고1·고2 내신 · 문법 집중', photo:'assets/t-eungyu.jpg',
     desc:'군포·산본·용호·흥진 등 다수 학교의 고1·고2 내신을 전담. 비내신 기간 문법·모의고사 집중으로 기본기를 다집니다.' },
   { key:'jiyeon', name:'지연 T', role:'고등부', short:'수리고 · 모의고사 집중', photo:'assets/t-jiyeon.jpg',
