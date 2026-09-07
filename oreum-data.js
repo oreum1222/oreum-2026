@@ -98,7 +98,7 @@ window.OREUM = {
   shell: function(active){
     var notice = document.getElementById('notice-bar');
     if(notice){
-      var msg = '[오름] 국어 · 2026 1학기 정규반 접수 중 &nbsp;·&nbsp; 학교별 맞춤 내신 대비 &nbsp;·&nbsp; 2027학년도 6월 평가원 총평 공개';
+      var msg = '[오름] 국어 · 2026 2학기 정규반 접수 중 &nbsp;·&nbsp; 학교별 맞춤 내신 대비 &nbsp;·&nbsp; 2027학년도 6월 평가원 총평 공개';
       notice.innerHTML = '<div class="nb-inner"><span class="nb-ico"><span class="material-symbols-outlined text-[18px]">campaign</span></span>'
         + '<span class="nb-vp"><span class="nb-track">'+msg+' &nbsp;&nbsp;&nbsp;&nbsp; '+msg+'</span></span>'
         + '<button class="nb-close" aria-label="공지 닫기" onclick="document.getElementById(\'notice-bar\').remove()"><span class="material-symbols-outlined text-[18px]">close</span></button></div>';
@@ -121,12 +121,12 @@ window.OREUM = {
     var ov=document.createElement('div');ov.className='rp-ov';ov.id='regPop';
     ov.innerHTML='<div class="rp-card">'
       +'<button class="rp-close" aria-label="닫기" onclick="OREUM.closePop()"><span class="material-symbols-outlined text-[20px]">close</span></button>'
-      +'<span class="rp-badge"><span class="material-symbols-outlined text-[15px]">wb_sunny</span>2026 여름방학 특강</span>'
+      +'<span class="rp-badge"><span class="material-symbols-outlined text-[15px]">menu_book</span>2026 2학기 정규반</span>'
       +'<div class="rp-h">지금 <b>사전등록</b>하고<br>우선 상담받으세요</div>'
-      +'<div class="rp-sub">선착순 마감 · 사전등록하시면 학교·학년별 반 배정과 상담을 먼저 안내해 드립니다.</div>'
+      +'<div class="rp-sub">2학기 정규반 접수 중 · 사전등록하시면 학교·학년별 반 배정과 상담을 먼저 안내해 드립니다.</div>'
       +'<div class="rp-list">'
       +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>학교·학년별 맞춤 반 우선 배정</div>'
-      +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>여름특강 시간표 · 상담 우선 안내</div>'
+      +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>2학기 정규반 시간표 · 상담 우선 안내</div>'
       +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>1분이면 끝나는 간단 등록</div>'
       +'</div>'
       +'<a class="rp-cta" href="'+url+'" target="_blank" rel="noopener" onclick="OREUM.closePop()">사전등록 하러 가기 <span class="material-symbols-outlined text-[19px]">arrow_forward</span></a>'
