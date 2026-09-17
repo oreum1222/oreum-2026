@@ -73,7 +73,7 @@ window.SST_PERIODS = {
 window.COURSES = [
   { school:"고3 정규반", grade:3, teacher:"가경 T", textbook:"평가원 기출 + EBS 교재 + 국어 콘텐츠 다수 활용", features:["수능 대비 커리큘럼 진행","내신 대비 별도 클리닉"], schedules:[{day:"금",time:"19:00 - 22:00",status:"open"},{day:"토",time:"09:00 - 12:00",status:"open"}] },
   { school:"군포고", grade:1, teacher:"은규 T", textbook:"공통국어 비상(박)", features:["학교 진도 맞춤 내신 대비","비내신 기간 문법 집중"], schedules:[{day:"토",time:"12:00 - 15:00",status:"open"},{day:"토",time:"14:00 - 17:00",status:"open"}] },
-  { school:"군포중앙고", grade:1, teacher:"예담 T", textbook:"공통국어 비상(강)", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"일",time:"10:00 - 13:00",status:"open"}] },
+  { school:"군포중앙고", grade:1, teacher:"예담 T", textbook:"공통국어 비상(강)", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"금",time:"16:30 - 19:30",status:"open"}] },
   { school:"산본고", grade:1, teacher:"은규 T", textbook:"공통국어 비상(박)", features:["학교 진도 맞춤 내신 대비","고난도 문법 집중 대비"], schedules:[{day:"목",time:"19:00 - 22:00",status:"open"},{day:"금",time:"19:00 - 22:00",status:"open"}] },
   { school:"산본고", grade:1, teacher:"예담 T", textbook:"공통국어 비상(박)", features:["학교 진도 맞춤 내신 대비","고난도 문법 집중 대비"], schedules:[{day:"토",time:"10:00 - 13:00",status:"open"},{day:"일",time:"18:00 - 21:00",status:"open"}] },
   { school:"수리고", grade:1, teacher:"지연 T", textbook:"공통국어 창비", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"수",time:"17:00 - 20:00",status:"closing"},{day:"일",time:"11:00 - 14:00",status:"open"}] },
@@ -82,7 +82,7 @@ window.COURSES = [
   { school:"군포고", grade:2, teacher:"은규 T", textbook:"공통국어 지학사", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"토",time:"17:00 - 20:00",status:"open"},{day:"일",time:"14:00 - 17:00",status:"open"}] },
   { school:"군포중앙고", grade:2, teacher:"은규 T", textbook:"문학/독서 비상(강)", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"토",time:"19:00 - 22:00",status:"open"}] },
   { school:"산본고", grade:2, teacher:"은규 T", textbook:"문학/독서 학교 교과서", features:["학교 진도 맞춤 내신 대비","고전 문학 외부지문 대비"], schedules:[{day:"수",time:"17:00 - 20:00",status:"open"},{day:"일",time:"19:00 - 22:00",status:"open"}] },
-  { school:"수리고", grade:2, teacher:"지연 T", textbook:"문학/독서 미래엔", features:["학교 진도 맞춤 내신 대비","수시와 정시 동시 대비"], schedules:[{day:"수",time:"19:00 - 22:00",status:"closing"},{day:"일",time:"19:00 - 22:00",status:"open"}] },
+  { school:"수리고", grade:2, teacher:"지연 T", textbook:"문학/독서 미래엔", features:["학교 진도 맞춤 내신 대비","수시와 정시 동시 대비"], schedules:[{day:"수",time:"19:00 - 22:00",status:"closing"},{day:"일",time:"18:00 - 21:00",status:"open"}] },
   { school:"용호고", grade:2, teacher:"은규 T", textbook:"공통국어 비상(강)", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"일",time:"12:00 - 15:00",status:"open"}] },
   { school:"흥진고", grade:2, teacher:"은규 T", textbook:"문학/독서 비상(강)", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"일",time:"10:00 - 13:00",status:"open"}] },
   { school:"수원외고", grade:2, teacher:"은규 T", textbook:"문학/독서 학교 교과서", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"일",time:"17:00 - 20:00",status:"open"}] },
@@ -137,13 +137,13 @@ window.OREUM = {
       +'<div class="hp-fold-body" id="hpNormal">'
       +'<div class="hp-table ok cols2">'
       +'<div class="hp-row"><span class="cls">고3 정규반</span><span class="tm">금 19–22 · 토 9–12</span></div>'
-      +'<div class="hp-row"><span class="cls">군포중앙고1</span><span class="tm">일 10–13</span></div>'
+      +'<div class="hp-row"><span class="cls">군포중앙고1</span><span class="tm">금 16:30–19:30</span></div>'
       +'<div class="hp-row"><span class="cls">산본고1 <small>예담T</small></span><span class="tm">토 10–13 · 일 18–21</span></div>'
       +'<div class="hp-row"><span class="cls">수리고1</span><span class="tm">수 17–20 · 일 11–14</span></div>'
       +'<div class="hp-row"><span class="cls">용호고1</span><span class="tm">일 14–17</span></div>'
       +'<div class="hp-row"><span class="cls">군포중앙고2</span><span class="tm">토 19–22</span></div>'
       +'<div class="hp-row"><span class="cls">산본고2</span><span class="tm">수 17–20 · 일 19–22</span></div>'
-      +'<div class="hp-row"><span class="cls">수리고2</span><span class="tm">수 19–22 · 일 19–22</span></div>'
+      +'<div class="hp-row"><span class="cls">수리고2</span><span class="tm">수 19–22 · 일 18–21</span></div>'
       +'<div class="hp-row"><span class="cls">흥진고2</span><span class="tm">일 10–13</span></div>'
       +'<div class="hp-row"><span class="cls">수원외고2</span><span class="tm">일 17–20</span></div>'
       +'<div class="hp-row"><span class="cls">약술형 논술</span><span class="tm">일 13–16</span></div>'
