@@ -119,27 +119,29 @@ window.OREUM = {
   },
   regPopup: function(){
     if(document.getElementById('regPop'))return;
-    var url=window.OREUM_FORM_URL||'http://pf.kakao.com/_ksxaCn/chat';
     var ov=document.createElement('div');ov.className='rp-ov';ov.id='regPop';
     ov.innerHTML='<div class="rp-card">'
       +'<button class="rp-close" aria-label="닫기" onclick="OREUM.closePop()"><span class="material-symbols-outlined text-[20px]">close</span></button>'
-      +'<span class="rp-badge"><span class="material-symbols-outlined text-[15px]">menu_book</span>2026 2학기 정규반</span>'
-      +'<div class="rp-h">지금 <b>사전등록</b>하고<br>우선 상담받으세요</div>'
-      +'<div class="rp-sub">2학기 정규반 접수 중 · 사전등록하시면 학교·학년별 반 배정과 상담을 먼저 안내해 드립니다.</div>'
-      +'<div class="rp-list">'
-      +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>학교·학년별 맞춤 반 우선 배정</div>'
-      +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>2학기 정규반 시간표 · 상담 우선 안내</div>'
-      +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span>1분이면 끝나는 간단 등록</div>'
+      +'<span class="rp-badge"><span class="material-symbols-outlined text-[15px]">celebration</span>추석 연휴 수업 안내</span>'
+      +'<div class="rp-h">추석 연휴<br><b>수업 일정</b>을 안내드립니다</div>'
+      +'<div class="rp-sub">가족과 함께 따뜻하고 풍성한 한가위 보내시길 바랍니다. 연휴 기간 아래 반은 수업 시간이 변경됩니다.</div>'
+      +'<div class="rp-list" style="text-align:left">'
+      +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>중2</b> — 9/24(목) 14:00–17:00 <span style="opacity:.75">· 시험 일정별 등원은 개별 안내</span></span></div>'
+      +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>중3</b> — 9/24(목) 10:30–13:30</span></div>'
+      +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>산본고1(은규T)</b> — 9/24(목)·25(금) 10:00–13:00 <span style="opacity:.75">· 13시 이후 클리닉</span></span></div>'
+      +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>흥진고1·군포고1·군포고2</b> — 9/26(토) 10:00–19:00 클리닉형 <span style="opacity:.75">· 3시간 이상 등원 필수</span></span></div>'
+      +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span><span><b>그 외 모든 반은 기존 일정대로 정상 수업</b>합니다</span></div>'
       +'</div>'
-      +'<a class="rp-cta" href="'+url+'" target="_blank" rel="noopener" onclick="OREUM.closePop()">사전등록 하러 가기 <span class="material-symbols-outlined text-[19px]">arrow_forward</span></a>'
-      +'<button class="rp-later" onclick="OREUM.closePop()">다음에 볼게요</button>'
+      +'<div class="rp-sub" style="font-size:12px;margin-top:10px;opacity:.85">클리닉형 수업은 진도가 마무리된 학교 대상, 개인별 취약점 보완과 문제 풀이에 집중합니다. 진도가 남은 학교는 정상 수업합니다.</div>'
+      +'<a class="rp-cta" href="#" onclick="OREUM.closePop();return false;">확인했어요</a>'
+      +'<a class="rp-later" href="http://pf.kakao.com/_ksxaCn/chat" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none">일정 문의 · 카카오톡 상담</a>'
       +'</div>';
     ov.addEventListener('click',function(e){if(e.target===ov)window.OREUM.closePop();});
     document.body.appendChild(ov);
-    try{if(sessionStorage.getItem('oreum-reg-pop'))return;}catch(e){}
+    try{if(sessionStorage.getItem('oreum-chuseok-pop'))return;}catch(e){}
     setTimeout(function(){ov.classList.add('show');},1000);
   },
-  closePop: function(){var ov=document.getElementById('regPop');if(ov)ov.classList.remove('show');try{sessionStorage.setItem('oreum-reg-pop','1');}catch(e){}},
+  closePop: function(){var ov=document.getElementById('regPop');if(ov)ov.classList.remove('show');try{sessionStorage.setItem('oreum-chuseok-pop','1');}catch(e){}},
   toggleTheme: function(){var d=document.documentElement,light=d.classList.toggle('light');d.classList.toggle('dark',!light);try{localStorage.setItem('oreum-theme',light?'light':'dark');}catch(e){}var ic=document.getElementById('theme-icon');if(ic)ic.textContent=light?'dark_mode':'light_mode';var m=document.querySelector('meta[name=theme-color]');if(m)m.content=light?'#f6faf7':'#090d0b';},
   reveal: function(){
     var els=[].slice.call(document.querySelectorAll('.fi'));
