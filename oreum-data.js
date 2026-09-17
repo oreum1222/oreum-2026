@@ -87,7 +87,6 @@ window.COURSES = [
   { school:"흥진고", grade:2, teacher:"은규 T", textbook:"문학/독서 비상(강)", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"일",time:"10:00 - 13:00",status:"open"}] },
   { school:"수원외고", grade:2, teacher:"은규 T", textbook:"문학/독서 학교 교과서", features:["학교 진도 맞춤 내신 대비","비내신 기간 모의고사 집중"], schedules:[{day:"일",time:"17:00 - 20:00",status:"open"}] },
   { school:"약술형 논술", grade:3, teacher:"양원철 T", textbook:"EBS 교재 + 약술형 논술 콘텐츠 다수 활용", features:["수시 전형 준비","약술형 논술 철벽 대비"], schedules:[{day:"일",time:"13:00 - 16:00",status:"open"}] },
-  { school:"중2 정규반 (궁내·용호중)", grade:-2, teacher:"해솔 T", textbook:"미래엔(민/신) + 중등 정규 과정 교재", features:["기본기부터 심화까지 학습","내신 대비 별도 클리닉"], schedules:[{day:"월",time:"17:00 - 20:00",status:"open"}] },
   { school:"중2 정규반 (산본·용호·당동중)", grade:-2, teacher:"해솔 T", textbook:"천재(노)·미래엔(신) + 중등 정규 과정 교재", features:["기본기부터 심화까지 학습","내신 대비 별도 클리닉"], schedules:[{day:"토",time:"14:00 - 17:00",status:"open"}] },
   { school:"중3 정규반 (산본·당동·궁내중)", grade:-3, teacher:"중등부 전임", textbook:"천재(박)·미래엔(신) + 중등 정규 과정 교재", features:["기본기부터 심화까지 학습","내신 대비 별도 클리닉"], schedules:[{day:"토",time:"10:00 - 13:00",status:"open"}] }
 ];
