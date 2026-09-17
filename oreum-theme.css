@@ -291,6 +291,43 @@ html.light {
 .rp-cta:hover{opacity:.92;transform:translateY(-1px);}
 .rp-later{display:block;margin-top:14px;font-size:13px;color:#8fa89a;background:none;border:0;cursor:pointer;width:100%;padding:4px;}
 .rp-later:hover{color:#b3c8ba;}
+/* 연휴 안내 팝업 · 도식 테이블 */
+.rp-card.rp-wide{max-width:680px;max-height:92vh;overflow:auto;}
+.hp-fold{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;padding:11px 14px;border:1px solid rgba(110,231,168,.28);background:rgba(110,231,168,.06);border-radius:13px;cursor:pointer;font-size:12.5px;font-weight:700;color:#9fe8c0;}
+.hp-fold .material-symbols-outlined{font-size:19px;transition:transform .25s;}
+.hp-fold.open .material-symbols-outlined{transform:rotate(180deg);}
+.hp-fold-body{display:none;margin-top:8px;}
+.hp-fold-body.open{display:block;}
+.hp-sec{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.1em;text-align:left;margin:18px 0 8px;}
+.hp-sec.chg{color:#fbcf5b;}
+.hp-sec.ok{color:#6ee7a8;}
+.hp-sec .ln{flex:1;height:1px;background:rgba(255,255,255,.08);}
+.hp-table{border:1px solid rgba(255,255,255,.1);border-radius:13px;overflow:hidden;text-align:left;}
+.hp-table.chg{border-color:rgba(251,207,91,.3);}
+.hp-table.ok{border-color:rgba(110,231,168,.25);}
+.hp-row{display:flex;flex-direction:column;gap:2px;padding:8px 13px;border-top:1px solid rgba(255,255,255,.07);}
+.hp-row:first-child{border-top:0;}
+.hp-row.h{flex-direction:row;align-items:baseline;justify-content:space-between;gap:12px;}
+.hp-table.cols2{display:grid;grid-template-columns:1fr 1fr;}
+.hp-table.cols2 .hp-row{border-top:1px solid rgba(255,255,255,.07);}
+.hp-table.cols2 .hp-row:nth-child(-n+2){border-top:0;}
+.hp-table.cols2 .hp-row:nth-child(even){border-left:1px solid rgba(255,255,255,.07);}
+@media(max-width:560px){.hp-table.cols2{grid-template-columns:1fr;}.hp-table.cols2 .hp-row:nth-child(2){border-top:1px solid rgba(255,255,255,.07);}.hp-table.cols2 .hp-row:nth-child(even){border-left:0;}}
+.hp-row .cls{font-size:12.5px;font-weight:700;color:#eaf3ec;}
+.hp-row .cls small{font-weight:500;color:#8fa89a;font-size:11px;}
+.hp-row .tm{font-size:12px;color:#b3c8ba;font-variant-numeric:tabular-nums;}
+.hp-row .tm em{font-style:normal;color:#fbcf5b;font-weight:700;}
+.hp-note{font-size:11.5px;color:#8fa89a;margin-top:12px;text-align:left;line-height:1.55;}
+@media(max-width:560px){
+  .rp-card.rp-wide{padding:26px 18px;}
+  .rp-card.rp-wide .rp-h{font-size:19px;}
+  .rp-card.rp-wide .rp-sub{font-size:12.5px;}
+  .hp-row.h{flex-direction:column;align-items:flex-start;gap:1px;}
+  .hp-row .tm{text-align:left;}
+  .hp-table.cols2{grid-template-columns:1fr;}
+  .hp-table.cols2 .hp-row:nth-child(2){border-top:1px solid rgba(255,255,255,.07);}
+  .hp-table.cols2 .hp-row:nth-child(even){border-left:0;}
+}
 
 /* ===== 히어로 강좌 CTA 강조 (여름특강 유도) ===== */
 .sst-cta{position:relative;animation:sstRing 2.2s ease-out infinite;}
