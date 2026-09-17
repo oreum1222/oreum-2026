@@ -130,6 +130,7 @@ window.OREUM = {
       +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>중3</b> — 9/24(목) 10:30–13:30</span></div>'
       +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>산본고1(은규T)</b> — 9/24(목)·25(금) 10:00–13:00 <span style="opacity:.75">· 13시 이후 클리닉</span></span></div>'
       +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>흥진고1·군포고1·군포고2</b> — 9/26(토) 10:00–19:00 클리닉형 <span style="opacity:.75">· 3시간 이상 등원 필수</span></span></div>'
+      +'<div class="rp-li"><span class="material-symbols-outlined">schedule</span><span><b>용호고2</b> — 9/29(화) 14:00~ <span style="opacity:.75">· 직전 보강으로 대체</span></span></div>'
       +'<div class="rp-li"><span class="material-symbols-outlined">check_circle</span><span><b>그 외 모든 반은 기존 일정대로 정상 수업</b>합니다</span></div>'
       +'</div>'
       +'<div class="rp-sub" style="font-size:12px;margin-top:10px;opacity:.85">클리닉형 수업은 진도가 마무리된 학교 대상, 개인별 취약점 보완과 문제 풀이에 집중합니다. 진도가 남은 학교는 정상 수업합니다.</div>'
