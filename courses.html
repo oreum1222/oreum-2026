@@ -202,7 +202,15 @@
     });
     grid.innerHTML=html;
   }
-  renderCourses(); renderTimetable();
+  // 홈 칩 등에서 넘어온 ?f= 필터 적용
+  var initF="all";
+  try{var q=new URLSearchParams(location.search).get("f");if(q)initF=q;}catch(e){}
+  var initBtn=document.querySelector('.filter-btn[data-filter="'+initF+'"]');
+  if(!initBtn){initF="all";initBtn=document.querySelector('.filter-btn[data-filter="all"]');}
+  document.querySelectorAll(".filter-btn").forEach(function(b){b.classList.remove("active");});
+  if(initBtn)initBtn.classList.add("active");
+  renderCourses(initF); renderTimetable();
+  if(initF!=="all"){var cs=document.getElementById("courses");if(cs)setTimeout(function(){cs.scrollIntoView({behavior:"smooth"});},150);}
   OREUM.reveal();
 </script>
 </body></html>
