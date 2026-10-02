@@ -114,7 +114,7 @@ window.OREUM = {
       btn.onclick=window.OREUM.toggleTheme;
       if(kakao&&kakao.parentElement){kakao.parentElement.insertBefore(btn,kakao);}else{nav.appendChild(btn);}
     }
-    window.OREUM.regPopup();
+    // window.OREUM.regPopup(); // 추석 연휴 종료로 팝업 내림(2026-10-03) — 다음 공지 때 내용 교체 후 주석 해제
   },
   regPopup: function(){
     if(document.getElementById('regPop'))return;
