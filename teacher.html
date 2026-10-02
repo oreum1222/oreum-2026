@@ -102,7 +102,9 @@
     <div class="eyebrow mb-2">TEACHERS</div>
     <h2 class="sec-title text-headline-lg text-on-surface">전임 강사진</h2>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 fi" id="teacherList"></div>
+  <div class="tcar fi" id="tcar" aria-label="강사 카드 캐러셀"></div>
+<p class="text-center text-[12.5px] text-on-surface-variant mt-4">카드를 <b class="text-secondary">누르면</b> 아래에 상세 소개가 열립니다 · 마우스를 올리면 흐름이 멈춥니다</p>
+<div id="tcarDetail" class="tcar-detail" hidden><img id="tdPhoto" src="" alt=""><div><span class="role" id="tdRole"></span><div class="nm" id="tdName"></div><p class="dsc" id="tdDesc"></p></div></div>
 </section>
 
 <!-- 문의 CTA -->
@@ -125,14 +127,57 @@
 <script>
   OREUM.shell('teacher');
   (function(){
-    var list=document.getElementById('teacherList');
-    var others=window.TEACHERS.filter(function(t){return !t.head;});
-    list.innerHTML=others.map(function(t){
-      return '<div class="tc-card crd-hover" style="display:flex;gap:18px;text-align:left;align-items:flex-start">'
-        +'<img class="tc-photo" style="width:72px;height:72px;margin:0;flex-shrink:0" src="'+t.photo+'" alt="'+t.role+' '+t.name+'">'
-        +'<div><div class="tc-role">'+t.role+'</div><div class="tc-name">'+t.name+'</div>'
-        +'<p class="text-[13px] text-on-surface-variant leading-relaxed mt-2">'+t.desc+'</p></div></div>';
+    var wrap=document.getElementById('tcar');
+    var T=window.TEACHERS;
+    var CARDS=T.concat(T); // 2벌로 무한 루프
+    wrap.innerHTML=CARDS.map(function(tt,ci){
+      return '<div class="tcar-card" data-i="'+(ci%T.length)+'">'
+        +'<img src="'+tt.photo+'" alt="'+tt.role+' '+tt.name+'" loading="lazy">'
+        +'<div class="sh"></div><div class="ov">'
+        +'<span class="role'+(tt.head?' head':'')+'">'+tt.role+'</span>'
+        +'<div class="nm">'+tt.name+'</div>'
+        +'<div class="sht">'+tt.short+'</div>'
+        +'<div class="dsc">'+tt.desc+'</div>'
+        +'</div></div>';
     }).join('');
+    var els=[].slice.call(wrap.children);
+    var mob=window.innerWidth<640, CW=mob?236:300, GAP=mob?18:26, STEP=CW+GAP, L=STEP*els.length;
+    var pos=0, speed=0.55, paused=false, reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    wrap.addEventListener('mouseenter',function(){paused=true;});
+    wrap.addEventListener('mouseleave',function(){paused=false;});
+    wrap.addEventListener('touchstart',function(){paused=true;clearTimeout(wrap._t);wrap._t=setTimeout(function(){paused=false;},2600);},{passive:true});
+    function frame(){
+      var w=wrap.clientWidth||1100, half=w/2;
+      if(!paused&&!reduced)pos=(pos+speed)%L;
+      for(var i=0;i<els.length;i++){
+        var raw=i*STEP-pos, x=((raw%L)+L)%L-STEP;
+        var el=els[i];
+        if(x<-STEP-40||x>w+40){el.style.visibility='hidden';continue;}
+        el.style.visibility='visible';
+        var dxn=(x+CW/2-half)/half;
+        var y=56*dxn*dxn, r=8*dxn, sc=1-0.13*Math.min(1,Math.abs(dxn));
+        el.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+r.toFixed(2)+'deg) scale('+sc.toFixed(3)+')';
+        el.style.filter='brightness('+(1-0.42*Math.min(1,Math.abs(dxn))).toFixed(3)+')';
+        el.style.zIndex=String(100-Math.round(Math.abs(dxn)*50));
+        el.classList.toggle('ctr',Math.abs(dxn)<0.22);
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    // 카드 클릭 → 상세 소개 패널
+    var dPanel=document.getElementById('tcarDetail');
+    wrap.addEventListener('click',function(e){
+      var c=e.target.closest('.tcar-card'); if(!c)return;
+      var tt=T[+c.getAttribute('data-i')]; if(!tt)return;
+      document.getElementById('tdPhoto').src=tt.photo;
+      document.getElementById('tdPhoto').alt=tt.role+' '+tt.name;
+      var r=document.getElementById('tdRole'); r.textContent=tt.role; r.className='role'+(tt.head?' head':'');
+      document.getElementById('tdName').textContent=tt.name;
+      document.getElementById('tdDesc').textContent=tt.desc;
+      dPanel.hidden=false; requestAnimationFrame(function(){dPanel.classList.add('on');});
+      paused=true; clearTimeout(wrap._p); wrap._p=setTimeout(function(){paused=false;},4500);
+      dPanel.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
   })();
   OREUM.reveal();
 </script>

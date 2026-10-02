@@ -340,3 +340,31 @@ html.light {
 /* ===== CTA float ===== */
 .cta-float{position:fixed;right:22px;bottom:22px;z-index:40;display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;background:rgb(var(--c-secondary));color:rgb(var(--c-on-secondary));font-weight:700;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .25s;text-decoration:none;}
 .cta-float:hover{transform:translateY(-3px);}
+
+/* ===== 강사 카드 캐러셀 (곡선 루프) ===== */
+.tcar{position:relative;height:520px;overflow:hidden;}
+.tcar::before,.tcar::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:40;pointer-events:none;}
+.tcar::before{left:0;background:linear-gradient(90deg,rgb(var(--c-background)),transparent);}
+.tcar::after{right:0;background:linear-gradient(270deg,rgb(var(--c-background)),transparent);}
+.tcar-card{position:absolute;top:16px;left:0;width:300px;height:420px;border-radius:20px;overflow:hidden;background:#0d1a12;border:1px solid rgba(110,231,168,.16);box-shadow:0 24px 50px rgba(0,0,0,.5);will-change:transform;}
+.tcar-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;}
+.tcar-card .sh{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,transparent,rgba(5,10,7,.68) 46%,rgba(4,8,6,.94));}
+.tcar-card .ov{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 18px;}
+.tcar-card .role{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:rgb(var(--c-secondary));background:rgba(110,231,168,.14);border:1px solid rgba(110,231,168,.3);padding:3px 9px;border-radius:999px;}
+.tcar-card .role.head{color:#1a1206;background:#fbcf5b;border-color:#fbcf5b;}
+.tcar-card .nm{font-family:'Noto Serif KR',serif;font-weight:700;font-size:23px;color:#f2f8f3;margin-top:8px;}
+.tcar-card .sht{font-size:12.5px;color:#c4d4c8;margin-top:4px;}
+.tcar-card .dsc{font-size:12px;color:#a8bcae;line-height:1.55;margin-top:8px;opacity:0;max-height:0;transition:opacity .35s,max-height .35s;}
+.tcar-card.ctr{border-color:rgba(110,231,168,.55);box-shadow:0 30px 64px rgba(0,0,0,.6),0 0 0 1px rgba(110,231,168,.25);}
+.tcar-card.ctr .dsc{opacity:1;max-height:80px;}
+@media(max-width:640px){.tcar{height:430px;}.tcar-card{width:236px;height:340px;}.tcar-card .nm{font-size:19px;}}
+
+/* 캐러셀 하단 상세 소개 패널 */
+.tcar-detail{display:flex;gap:20px;align-items:flex-start;max-width:720px;margin:26px auto 0;background:rgb(var(--c-surface-container-lowest));border:1px solid rgba(110,231,168,.28);border-radius:18px;padding:20px 22px;opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s;}
+.tcar-detail.on{opacity:1;transform:none;}
+.tcar-detail img{width:86px;height:86px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid rgba(110,231,168,.35);flex-shrink:0;background:#0d1a12;}
+.tcar-detail .role{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:rgb(var(--c-secondary));background:rgba(110,231,168,.14);border:1px solid rgba(110,231,168,.3);padding:3px 9px;border-radius:999px;}
+.tcar-detail .role.head{color:#1a1206;background:#fbcf5b;border-color:#fbcf5b;}
+.tcar-detail .nm{font-family:'Noto Serif KR',serif;font-weight:700;font-size:19px;color:rgb(var(--c-on-surface));margin-top:6px;}
+.tcar-detail .dsc{font-size:13px;color:rgb(var(--c-on-surface-variant));line-height:1.7;margin-top:7px;}
+@media(max-width:560px){.tcar-detail{flex-direction:column;align-items:center;text-align:center;}}
