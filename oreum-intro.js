@@ -1,5 +1,5 @@
 /* [오름] 국어 첫 화면 원고지 인트로
-   원고지 칸이 그려짐 → 독서·문학·언매·화작·수능 → "성적이 오름, 자신감이 오름 / 방법의 옳음, 선택의 옳음" → [오름] 국어 → 홈으로
+   원고지 칸이 그려짐 → "성적이 오름, 자신감이 오름 / 방법의 옳음, 선택의 옳음" → [오름] 국어 → 홈으로
    - 세션당 1회(같은 탭에서 다시 안 뜸), 주소에 ?intro=1 이면 항상 재생
    - 클릭·탭·아무 키나 누르면 건너뜀, 움직임 줄이기 설정이면 재생 안 함 */
 (function () {
@@ -118,11 +118,8 @@
 
   // 타임라인
   requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('drawn'); }); });
-  var t = 1150;
-  ['독서', '문학', '언매', '화작', '수능'].forEach(function (w) { at(t, function () { word(w, WORD_ROW); }); t += 330; });
-  at(t + 80, clearAll);
-  t += 200;
-  LINES.forEach(function (ln, i) { t = typeLine(ln, START + i, t, 42) + (wide ? 220 : 120); });
+  var t = 1250;
+  LINES.forEach(function (ln, i) { t = typeLine(ln, START + i, t, 62) + (wide ? 260 : 150); });
   t += 900;
   at(t, function () { sheet.style.opacity = '0'; });
   at(t + 300, function () { root.classList.add('logo-on'); });
