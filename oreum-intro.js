@@ -116,14 +116,26 @@
     }, 750);
   }
 
-  // 타임라인
-  requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('drawn'); }); });
-  var t = 1250;
-  LINES.forEach(function (ln, i) { t = typeLine(ln, START + i, t, 62) + (wide ? 260 : 150); });
-  t += 900;
-  at(t, function () { sheet.style.opacity = '0'; });
-  at(t + 300, function () { root.classList.add('logo-on'); });
-  at(t + 1500, finish);
+  // 타임라인 — 탭이 화면에 보일 때 시작(숨은 탭은 rAF가 멈춰 원고지가 안 그려짐)
+  var started = false;
+  function start() {
+    if (started || done) return; started = true;
+    var dn = false;
+    function draw() { if (dn) return; dn = true; root.classList.add('drawn'); }
+    requestAnimationFrame(function () { requestAnimationFrame(draw); });
+    at(150, draw); // rAF가 밀리는 환경 폴백
+    var t = 1250;
+    LINES.forEach(function (ln, i) { t = typeLine(ln, START + i, t, 62) + (wide ? 260 : 150); });
+    t += 900;
+    at(t, function () { sheet.style.opacity = '0'; });
+    at(t + 300, function () { root.classList.add('logo-on'); });
+    at(t + 1500, finish);
+  }
+  if (document.visibilityState === 'hidden') {
+    document.addEventListener('visibilitychange', function vh() {
+      if (document.visibilityState === 'visible') { document.removeEventListener('visibilitychange', vh); start(); }
+    });
+  } else { start(); }
 
   root.addEventListener('click', finish);
   window.addEventListener('keydown', function k() { finish(); window.removeEventListener('keydown', k); });
