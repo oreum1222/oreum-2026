@@ -11,7 +11,7 @@
   } catch (e) {}
 
   var css = [
-    '#oi{position:fixed;inset:0;z-index:9999;background:rgb(var(--c-background));display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .7s cubic-bezier(.7,0,.2,1),opacity .7s;font-family:"Noto Serif KR",serif;}',
+    '#oi{position:fixed;inset:0;z-index:9999;background:rgb(var(--c-background));display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .7s cubic-bezier(.7,0,.2,1),opacity .7s;font-family:"Hakgyoansim Badasseugi","Noto Serif KR",serif;}',
     '#oi.out{transform:translateY(-100%);}',
     '#oi .glow{position:absolute;width:70vmax;height:70vmax;border-radius:50%;background:radial-gradient(circle,rgb(var(--c-secondary)/.10),transparent 65%);pointer-events:none;}',
     '#oi .sheet{display:grid;gap:0;row-gap:var(--rg);transition:opacity .4s;position:relative;}',
