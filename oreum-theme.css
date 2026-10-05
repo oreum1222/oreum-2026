@@ -235,7 +235,7 @@ html.light {
 .contact-v{font-size:16px;font-weight:700;color:rgb(var(--c-on-surface));margin-top:2px;}
 
 /* ===== 히어로 강사 배치 (원본 오름 구성 유지) ===== */
-.hero-teachers{flex-shrink:0;width:380px;max-width:100%;margin-left:auto;margin-right:auto;}
+.hero-teachers{flex-shrink:0;width:100%;max-width:380px;margin-left:auto;margin-right:auto;}
 .teachers-layout{display:flex;align-items:center;justify-content:center;gap:8px;}
 .teachers-side{display:flex;flex-direction:column;gap:10px;}
 .teacher-card{text-align:center;}
@@ -412,3 +412,13 @@ html.light .amb::before{content:"";position:absolute;inset:-70px -140px;pointer-
   background:radial-gradient(46% 62% at 16% 18%, rgb(var(--c-secondary)/.09), transparent 72%);}
 html.light .amb-r::before{background:radial-gradient(46% 62% at 84% 22%, rgb(var(--c-secondary)/.09), transparent 72%);}
 html.light .amb-c::before{background:radial-gradient(52% 64% at 50% 28%, rgb(var(--c-secondary)/.09), transparent 72%);}
+
+/* 모바일 가로 넘침 방지 */
+html,body{overflow-x:clip;}
+@media(max-width:768px){html.light .amb::before{left:0;right:0;}}
+
+@media(max-width:640px){
+  .px-margin-desktop{padding-left:18px;padding-right:18px;}
+  .mrow{padding:20px 2px;}
+  .fq-a{padding-left:0;}
+}

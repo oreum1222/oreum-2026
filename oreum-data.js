@@ -108,7 +108,7 @@ window.OREUM = {
     var nav=document.querySelector('nav'); if(nav){
       var kakao=nav.querySelector('a[href*="pf.kakao.com"]');
       var light=document.documentElement.classList.contains('light');
-      var btn=document.createElement('button');btn.id='theme-toggle';btn.title='다크/라이트 전환';btn.hidden=true; /* 당분간 라이트 고정으로 토글 숨김 */
+      var btn=document.createElement('button');btn.id='theme-toggle';btn.title='다크/라이트 전환';btn.style.display='none'; /* 당분간 라이트 고정으로 토글 숨김 */
       btn.className='h-10 w-10 rounded-lg border border-outline-variant text-on-surface-variant hover:text-secondary hover:border-secondary transition-colors flex items-center justify-center shrink-0';
       btn.innerHTML='<span class="material-symbols-outlined text-[20px]" id="theme-icon">'+(light?'dark_mode':'light_mode')+'</span>';
       btn.onclick=window.OREUM.toggleTheme;
