@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="theme-color" content="#090d0b"/>
-<script>(function(){try{var t=localStorage.getItem('oreum-theme'),d=document.documentElement;if(t==='light'){d.classList.remove('dark');d.classList.add('light');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#f6faf7';}else{d.classList.add('dark');}}catch(e){}})();</script>
+<script>(function(){try{var t='light',d=document.documentElement; /* 당분간 라이트 고정 — 원복: t=localStorage.getItem('oreum-theme') */if(t==='light'){d.classList.remove('dark');d.classList.add('light');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#f6faf7';}else{d.classList.add('dark');}}catch(e){}})();</script>
 <title>오름국어학원(군포·산본) · 김가경 [오름] 국어 정규반</title>
 <meta name="description" content="군포·산본·평촌 오름국어학원 [오름] 국어(원장 김가경). 군포고·군포중앙고·산본고·수리고·용호고·흥진고 학교별 맞춤 국어 내신·수능 대비 정규반, 약술논술, 중등부, 방학 특강. 체계적 관리 시스템."/>
 <meta name="keywords" content="오름국어학원, 오름국어학원 군포, 군포 오름국어, 산본 오름국어, 김가경 오름국어, 군포 국어학원, 산본 국어학원, 평촌 국어학원, 안양 국어학원, 군포고 국어내신, 군포중앙고 국어, 산본고 국어내신, 수리고 국어, 용호고 국어, 흥진고 국어, 김가경 국어, 약술논술, 국어 내신, 중등부 국어, 방학 특강"/>
@@ -31,13 +31,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBadasseugi/subsets/HakgyoansimBadasseugi-dynamic-subset.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = { darkMode:"class", theme:{ extend:{
     "colors":{ "background":"rgb(var(--c-background) / <alpha-value>)","surface-bright":"rgb(var(--c-surface-bright) / <alpha-value>)","surface":"rgb(var(--c-surface) / <alpha-value>)","surface-container-lowest":"rgb(var(--c-surface-container-lowest) / <alpha-value>)","surface-container-low":"rgb(var(--c-surface-container-low) / <alpha-value>)","surface-container":"rgb(var(--c-surface-container) / <alpha-value>)","surface-container-high":"rgb(var(--c-surface-container-high) / <alpha-value>)","surface-container-highest":"rgb(var(--c-surface-container-highest) / <alpha-value>)","outline-variant":"rgb(var(--c-outline-variant) / <alpha-value>)","outline":"rgb(var(--c-outline) / <alpha-value>)","on-surface":"rgb(var(--c-on-surface) / <alpha-value>)","on-surface-variant":"rgb(var(--c-on-surface-variant) / <alpha-value>)","secondary":"rgb(var(--c-secondary) / <alpha-value>)","on-secondary":"rgb(var(--c-on-secondary) / <alpha-value>)","secondary-fixed":"rgb(var(--c-secondary-fixed) / <alpha-value>)","gold":"rgb(var(--c-gold) / <alpha-value>)" },
     "spacing":{ "margin-desktop":"40px","margin-mobile":"16px","gutter":"24px","container-max":"1200px" },
-    "fontFamily":{ "sans":["Inter","Noto Sans KR"],"serif":["Hakgyoansim Badasseugi","Noto Serif KR","serif"] },
+    "fontFamily":{ "sans":["Hahmlet","Noto Sans KR"],"serif":["Hahmlet","Noto Serif KR","serif"] },
     "fontSize":{ "display-lg":["48px",{"lineHeight":"58px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-mobile":["32px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-lg":["30px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["22px",{"lineHeight":"30px","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}] }
   }}}
 </script>
@@ -94,7 +94,7 @@
 
 <!-- HERO -->
 <section id="top" class="relative overflow-hidden bg-surface-bright border-b border-outline-variant py-16 md:py-24">
-<div class="absolute -top-40 -right-24 w-[640px] h-[640px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(110,231,168,.12),transparent 70%)"></div>
+<div class="absolute -top-40 -right-24 w-[640px] h-[640px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgb(var(--c-secondary)/.12),transparent 70%)"></div>
 <div class="max-w-container-max mx-auto px-margin-desktop relative z-10 grid lg:grid-cols-2 gap-12 items-center">
   <div>
     <div class="brkt mb-5">2026 2학기 정규반</div>
@@ -179,21 +179,21 @@
 </section>
 
 <!-- 관리 시스템 -->
-<section class="max-w-container-max mx-auto px-margin-desktop py-14">
+<section class="amb max-w-container-max mx-auto px-margin-desktop py-14">
   <div class="fi mb-9">
     <div class="eyebrow mb-2"><span class="gc">관</span><span class="gc">리</span></div>
     <h2 class="sec-title text-headline-lg text-on-surface">내신 정규반 관리 시스템</h2>
     <p class="text-body-md text-on-surface-variant mt-2">수업만으로 끝나지 않습니다. 복습·과제·보강까지 촘촘하게 관리합니다.</p>
   </div>
   <div class="mledger fi">
-    <div class="mrow"><span class="mnum">01</span><div class="mtit">복습 시험<span class="mdesc">지난주 학습 내용 완벽 복습 · 진도 시작 전 실시</span></div><div class="mval">매주 30분</div></div>
+    <div class="mrow"><span class="mnum">01</span><div class="mtit">복습 시험<span class="mdesc">지난주 학습 내용 완벽 복습 · 진도 시작 전 실시</span></div><div class="mval">매주 15분</div></div>
     <div class="mrow"><span class="mnum">02</span><div class="mtit">주간 과제<span class="mdesc">엄선된 문제로 체계적 문제 풀이 훈련</span></div><div class="mval">주 100문항</div></div>
     <div class="mrow"><span class="mnum">03</span><div class="mtit">보강 시스템<span class="mdesc">결석 시 100% 학습 보장 · 필수 참여</span></div><div class="mval">영상+클리닉</div></div>
   </div>
 </section>
 
 <!-- 무료 학습 진단 (기존 진단 시스템 연결) -->
-<section class="max-w-container-max mx-auto px-margin-desktop py-14">
+<section class="amb amb-r max-w-container-max mx-auto px-margin-desktop py-14">
   <div class="fi mb-9">
     <div class="eyebrow mb-2"><span class="gc">무</span><span class="gc">료</span><span class="gs"></span><span class="gc">진</span><span class="gc">단</span></div>
     <h2 class="sec-title text-headline-lg text-on-surface">무료 학습 진단</h2>
@@ -222,7 +222,7 @@
 </section>
 
 <!-- 유튜브 -->
-<section class="max-w-container-max mx-auto px-margin-desktop py-14">
+<section class="amb max-w-container-max mx-auto px-margin-desktop py-14">
   <div class="fi mb-9 flex items-end justify-between flex-wrap gap-3">
     <div>
       <div class="eyebrow mb-2"><span class="gc">영</span><span class="gc">상</span></div>
@@ -285,7 +285,7 @@
 </section>
 
 <!-- 문의 -->
-<section id="contact" class="max-w-container-max mx-auto px-margin-desktop py-16">
+<section id="contact" class="amb amb-c max-w-container-max mx-auto px-margin-desktop py-16">
   <div class="fi text-center mb-10">
     <div class="eyebrow mb-2"><span class="gc">상</span><span class="gc">담</span></div>
     <h2 class="sec-title text-headline-lg text-on-surface">상담 · 문의</h2>
