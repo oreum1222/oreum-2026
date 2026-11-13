@@ -11,6 +11,7 @@
   var holdAt = forceM ? parseInt(forceM[1], 10) : 0;
   try {
     if (!force && sessionStorage.getItem('oreumSgPopSeen')) return;
+    if (!force && sessionStorage.getItem('oreumSmPopActive')) return; // 설명회 팝업 기간엔 양보
   } catch (e) {}
 
   var CAMW = 780, CAMH = 560;

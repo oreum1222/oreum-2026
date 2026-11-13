@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>우리 아이에게 필요한 겨울 강의 찾기 | [오름] 국어</title>
+<meta name="description" content="예비 고1부터 고3까지, 간단한 질문을 하나씩 따라 내려오면 우리 아이에게 필요한 겨울 국어 강의가 나옵니다."/>
+<meta property="og:title" content="우리 아이에게 필요한 겨울 강의 찾기 | [오름] 국어"/>
+<meta property="og:description" content="간단한 질문을 따라 내려오면 우리 아이에게 필요한 겨울 국어 강의가 나옵니다."/>
+<meta property="og:image" content="https://class.oreumyak.com/og-image-v2.png"/>
+<link rel="icon" href="favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Hahmlet:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{ --bg:#f6faf7; --ink:#152a1e; --muted:#6b8073; --green:#0d9464; --green-soft:rgba(13,148,100,.1);
+         --line:rgba(13,148,100,.22); --card:#ffffff; --deep:#123524; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);}
+  body{font-family:'Noto Sans KR',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:clip;
+       background:radial-gradient(760px 520px at 50% 0, rgba(13,148,100,.07), transparent 70%), var(--bg);}
+  a{color:inherit;}
+  .wrap{width:100%;max-width:600px;margin:0 auto;padding:0 22px;}
+  .serif{font-family:'Hahmlet','Noto Serif KR',serif;}
+  /* 상단 바 */
+  .top{position:sticky;top:0;z-index:20;background:rgba(246,250,247,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:860px;}
+  .logo{font-family:'Hahmlet',serif;font-weight:700;letter-spacing:-.02em;font-size:19px;text-decoration:none;}
+  .logo em{font-style:normal;color:var(--green);}
+  .back{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:9px 15px;background:#fff;transition:border-color .2s,color .2s;}
+  .back:hover{border-color:var(--green);color:var(--ink);}
+  /* 히어로 */
+  .hero{padding:52px 0 8px;text-align:center;}
+  .eyebrow{display:inline-flex;align-items:baseline;gap:7px;font-size:13.5px;font-weight:700;color:var(--green);letter-spacing:.04em;}
+  .eyebrow::before{content:'[';font-family:'Hahmlet',serif;}
+  .eyebrow::after{content:']';font-family:'Hahmlet',serif;}
+  h1{font-family:'Hahmlet',serif;font-size:clamp(27px,5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.22;margin:18px 0 0;word-break:keep-all;}
+  .hero .sub{font-size:15.5px;color:#4a5e52;margin:14px auto 0;max-width:430px;line-height:1.7;word-break:keep-all;text-wrap:pretty;}
+  .nb{display:inline-block;white-space:nowrap;}
+  /* 사다리 */
+  #ladder{padding:28px 0 10px;}
+  .step{margin:0 auto;}
+  .rung{display:flex;align-items:center;gap:12px;padding:13px 16px;margin-bottom:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;cursor:pointer;transition:border-color .2s;animation:rise .35s ease both;}
+  .rung:hover{border-color:var(--green);}
+  .rung .rq{font-size:12.5px;color:var(--muted);flex:1;min-width:0;word-break:keep-all;}
+  .rung .ra{font-size:14px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;}
+  .rung .rc{width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .rung .rc svg{width:12px;height:12px;}
+  .rung .redo{font-size:11px;color:#9bb0a3;white-space:nowrap;}
+  .link{width:2px;height:16px;background:linear-gradient(rgba(13,148,100,.35),rgba(13,148,100,0));margin:0 auto 10px;}
+  /* 현재 질문 */
+  .ask{background:#fff;border:1px solid rgba(13,148,100,.35);border-radius:18px;padding:26px 22px;animation:rise .4s ease both;box-shadow:0 24px 60px rgba(13,60,40,.1);}
+  .ask .qn{font-family:'Hahmlet',serif;font-size:12.5px;font-weight:700;color:var(--green);letter-spacing:.06em;}
+  .ask h2{font-family:'Hahmlet',serif;font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.45;margin:9px 0 2px;word-break:keep-all;}
+  .ask .hint{font-size:13.5px;color:var(--muted);margin:6px 0 0;line-height:1.6;word-break:keep-all;}
+  .opts{display:flex;flex-direction:column;gap:9px;margin-top:18px;}
+  .opt{text-align:left;width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:15px 16px;color:var(--ink);font-size:15.5px;font-weight:700;letter-spacing:-.01em;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:border-color .18s,background .18s,transform .1s;}
+  .opt:hover{border-color:var(--green);background:var(--green-soft);}
+  .opt:active{transform:scale(.99);}
+  .opt .od{font-size:12.5px;font-weight:500;color:var(--muted);}
+  .opt .ar{color:#9bb0a3;font-size:17px;}
+  .opt:hover .ar{color:var(--green);}
+  /* 결과 */
+  .result{animation:rise .45s ease both;}
+  .result .rh{text-align:center;margin:6px 0 20px;}
+  .result .rh .rt{font-family:'Hahmlet',serif;font-size:12.5px;font-weight:700;color:var(--green);letter-spacing:.06em;}
+  .result .rh h2{font-family:'Hahmlet',serif;font-size:24px;font-weight:700;letter-spacing:-.015em;margin:10px 0 0;word-break:keep-all;}
+  .rec{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;margin-bottom:11px;}
+  .rec.key{background:linear-gradient(170deg,var(--deep),#0c2418);color:#f2f8f3;border-color:transparent;}
+  .rec .num{font-family:'Hahmlet',serif;font-size:13px;font-weight:700;flex:0 0 auto;margin-top:2px;color:var(--muted);}
+  .rec.key .num{color:#7deeb2;}
+  .rec h3{font-family:'Hahmlet',serif;font-size:17px;font-weight:700;letter-spacing:-.01em;margin:0;}
+  .rec p{font-size:13.5px;line-height:1.65;margin:5px 0 0;color:#4a5e52;word-break:keep-all;}
+  .rec.key p{color:#b9cfc0;}
+  .rec.note{background:none;border:1px dashed rgba(13,148,100,.4);}
+  .rec.note h3{color:#3f5a4b;}
+  .rec.soft{background:linear-gradient(180deg,var(--green-soft),var(--card));border:1px solid rgba(13,148,100,.4);}
+  .rec.soft .num{color:var(--green);font-weight:700;}
+  .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0 12px;}
+  .cta a{text-decoration:none;font-size:14.5px;font-weight:700;border-radius:12px;padding:13px 22px;transition:opacity .2s,border-color .2s,background .2s;}
+  .cta .p{background:var(--green);color:#fff;}
+  .cta .p:hover{opacity:.9;}
+  .cta .s{border:1px solid var(--line);color:var(--ink);background:#fff;}
+  .cta .s:hover{border-color:var(--green);background:var(--green-soft);}
+  .restart{display:block;margin:4px auto 0;background:none;border:0;color:#9bb0a3;font-size:13px;cursor:pointer;font-family:inherit;padding:8px;}
+  .restart:hover{color:var(--muted);}
+  .callout{background:var(--green-soft);border:1px solid rgba(13,148,100,.45);border-radius:12px;padding:13px 16px;margin:-4px 0 16px;font-family:'Noto Sans KR',sans-serif;font-size:14.5px;font-weight:700;color:#1d4634;text-align:center;line-height:1.6;word-break:keep-all;}
+  .callout b{color:var(--green);}
+  .fee{font-size:12.5px;color:#4a5e52;text-align:center;margin:4px 0 2px;line-height:1.7;word-break:keep-all;}
+  .mini{font-size:12px;color:#8a9c90;margin:18px 0 80px;text-align:center;line-height:1.7;word-break:keep-all;}
+  footer{border-top:1px solid var(--line);background:rgba(255,255,255,.5);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:28px 22px;color:var(--muted);font-size:13px;max-width:860px;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){.rung,.ask,.result{animation:none;}}
+</style>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><em>[오름]</em> 국어</a>
+  <a class="back" href="index.html">← 홈으로</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow">예비 고1부터 고3까지 겨울 안내</span>
+    <h1><span class="nb">우리 아이에게 필요한</span> <span class="nb">겨울 강의 찾기</span></h1>
+    <p class="sub">간단한 질문을 하나씩 따라 내려오시면, 겨울에 무엇을 준비하면 좋을지 나옵니다.</p>
+  </section>
+
+  <div id="ladder"></div>
+
+  <p class="mini">큰 방향을 잡기 위한 안내입니다. 아이의 학교와 성적, 학습 이력에 따라 결과가 달라질 수 있으니 마지막은 상담으로 확인해 주세요.</p>
+</main>
+
+<footer><div class="wrap">
+  <span>[오름] 국어</span>
+  <a href="http://pf.kakao.com/_ksxaCn/chat" target="_blank" rel="noopener" style="text-decoration:none;color:#3f5a4b;">카카오톡 문의 →</a>
+</div></footer>
+
+<script>
+(function(){
+  var KAKAO='http://pf.kakao.com/_ksxaCn/chat';
+  function track(n,p){ if(window.gtag){ window.gtag('event',n,p||{}); } }
+
+  // 질문 정의 — 학년별 분기
+  var Q={
+    grade:{ n:'질문 1', q:'자녀가 어느 학년인가요?', hint:'겨울 기준으로 올라갈 학년을 골라 주세요.', short:'학년',
+      opts:[
+        {label:'예비 고1', d:'(현재 중3)', val:'g1', a:'예비 고1', next:'g1_gaenyeom'},
+        {label:'예비 고2', d:'(현재 고1)', val:'g2', a:'예비 고2', next:'g2_gaenyeom'},
+        {label:'예비 고3', d:'(현재 고2)', val:'g3', a:'예비 고3', next:'g3_grammar'}
+      ]},
+    g1_gaenyeom:{ n:'질문 2', q:'문학개념어가 준비돼 있나요?', hint:'고등부 학습 과정을 경험한 적 있는지, 있다면 ‘문학 개념어’를 전체적으로 짚어본 적이 있는지를 꼭 확인해 보세요.', short:'문학개념어',
+      opts:[
+        {label:'네, 준비돼 있어요', val:'yes', a:'준비됨', next:'g1_grammar'},
+        {label:'아니요, 아직이에요', val:'no', a:'아직', next:'g1_grammar'}
+      ]},
+    g1_grammar:{ n:'마지막 질문', q:'현대문법이 대비돼 있나요?', hint:'중학교 수준이 아닌 단어편, 음운편, 문장편을 전반적으로 정리한 적이 있는지 꼭 확인해 보세요.', short:'현대문법',
+      opts:[
+        {label:'네, 대비돼 있어요', val:'yes', a:'대비됨', next:'RESULT'},
+        {label:'아니요, 아직이에요', val:'no', a:'아직', next:'RESULT'}
+      ]},
+    g2_gaenyeom:{ n:'질문 2', q:'문학개념어를 끝까지 들어, 개념이 정리돼 있나요?', hint:'1학기 내신이 문학이라, 개념어가 출발점입니다.', short:'문학개념어',
+      opts:[
+        {label:'네, 정리돼 있어요', val:'yes', a:'정리됨', next:'g2_dir'},
+        {label:'아니요, 아직이에요', val:'no', a:'아직', next:'g2_dir'}
+      ]},
+    g2_dir:{ n:'질문 3', q:'겨울 공부의 무게를 어디에 두시겠어요?', hint:'심화 과목의 방향이 달라집니다.', short:'겨울 방향',
+      opts:[
+        {label:'내신에 집중할래요', val:'naesin', a:'내신 집중', next:'RESULT'},
+        {label:'수능 비중을 늘릴래요', val:'suneung', a:'수능 비중 확대', next:'RESULT'}
+      ]},
+    g3_grammar:{ n:'마지막 질문', q:'현대문법(화법과 언어)이 정리돼 있나요?', hint:'2학년 2학기에 ‘화법과 언어’를 배워 큰 틀이 잡혔는지로 보시면 됩니다.', short:'현대문법',
+      opts:[
+        {label:'네, 정리돼 있어요', d:'(군포중앙고2, 수리고2, 흥진고2 재학생이에요)', val:'yes', a:'정리됨', next:'RESULT'},
+        {label:'아직이에요', d:'(산본고2, 군포고2, 용호고2 재학생이에요)', val:'no', a:'아직', next:'RESULT'}
+      ]}
+  };
+
+  var ladder=document.getElementById('ladder');
+  var answers={};
+  var path=[];
+
+  function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+  var CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  function render(){
+    ladder.innerHTML='';
+    path.forEach(function(id,i){
+      if(i>0) ladder.appendChild(el('div','link'));
+      var qq=Q[id]; var ans=answers[id];
+      var opt=qq.opts.filter(function(o){return o.val===ans;})[0];
+      var r=el('div','step');
+      var rung=el('div','rung');
+      rung.innerHTML='<span class="rc">'+CHK+'</span><span class="rq">'+qq.short+'</span><span class="ra">'+(opt?opt.a:'')+'</span><span class="redo">수정</span>';
+      rung.addEventListener('click',function(){
+        path=path.slice(0,i);
+        var keep={}; path.forEach(function(pid){ keep[pid]=answers[pid]; });
+        answers=keep;
+        current=id;
+        render();
+      });
+      r.appendChild(rung);
+      ladder.appendChild(r);
+    });
+    if(current==='RESULT'){ renderResult(); }
+    else{
+      if(path.length) ladder.appendChild(el('div','link'));
+      renderAsk(current);
+    }
+    var last=ladder.lastChild;
+    if(last && last.scrollIntoView){ try{ last.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){} }
+  }
+
+  function renderAsk(id){
+    var qq=Q[id];
+    var box=el('div','ask');
+    box.innerHTML='<div class="qn">'+qq.n+'</div><h2>'+qq.q+'</h2>'+(qq.hint?'<p class="hint">'+qq.hint+'</p>':'');
+    var opts=el('div','opts');
+    qq.opts.forEach(function(o){
+      var b=el('button','opt');
+      b.innerHTML='<span>'+o.label+(o.d?' <span class="od">'+o.d+'</span>':'')+'</span><span class="ar">→</span>';
+      b.addEventListener('click',function(){
+        answers[id]=o.val;
+        if(path.indexOf(id)<0) path.push(id);
+        current=o.next;
+        render();
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+    ladder.appendChild(box);
+  }
+
+  function renderResult(){
+    track('finder_result',{grade:answers.grade||'',a1:answers.g1_gaenyeom||answers.g2_gaenyeom||'',a2:answers.g1_grammar||answers.g2_dir||'',a3:answers.g3_grammar||''});
+    var recs=[], notes=[];
+    var g=answers.grade;
+
+    if(g==='g1'){
+      // 포인트: 문학개념어 + 현대문법이 돼야 고등부 대비. 둘 다 되면 독해기초로 비문학 대비.
+      var gaOk=(answers.g1_gaenyeom==='yes'), grOk=(answers.g1_grammar==='yes');
+      if(!grOk) recs.push({key:true,t:'[통합] 현대문법',p:'품사부터 음운까지, 고등 문법의 큰 틀을 겨울에 세워 둡니다. 고1 내신 문법은 이 체계가 없으면 암기로 버티기 어렵습니다.'});
+      if(!gaOk) recs.push({key:grOk,t:'[통합] 문학개념어',p:'고등 문학은 개념어로 묻고 개념어로 답합니다. 고1 내신과 모의고사를 받치는 첫 기둥이라, 겨울에 반드시 잡아 두어야 합니다.'});
+      if(gaOk&&grOk){
+        recs.push({key:true,t:'[통합] 독해기초',p:'문학개념어도 문법도 준비돼 있으니, 겨울에는 독해 기초로 수능 국어 비문학 영역을 대비합니다. 읽는 힘은 고등 3년 국어 전체의 바탕이 됩니다.'});
+        notes.push({note:true,t:'문학개념어와 현대문법은 이미 준비돼 있습니다',p:'고등부를 준비하며 꼭 필요한 두 과목이 준비돼 있다니, 아주 탄탄한 기본기를 가졌네요. 다만 이 두 영역은 내신에서 매우 중요하게 작용하니, 그 중요도를 고려해 이번 방학에 다시 한번 학습해 보는 것도 고려해 보세요.'});
+      }else{
+        if(gaOk) notes.push({note:true,t:'문학개념어는 준비돼 있습니다',p:'남은 한 과목만 채우면 고등부 대비가 완성됩니다.'});
+        if(grOk) notes.push({note:true,t:'현대문법은 대비돼 있습니다',p:'남은 한 과목만 채우면 고등부 대비가 완성됩니다.'});
+      }
+    }
+
+    if(g==='g2'){
+      var gaNeed=(answers.g2_gaenyeom==='no');
+      var sun=(answers.g2_dir==='suneung');
+      // 심화: 내신 집중=고전문학, 수능 비중=[고2] 수능반
+      var simhwa = sun ? {t:'[고2] 수능반',p:'수능 문학을 실제로 풀며, 모의고사와 수능을 함께 준비합니다. 수능 비중을 늘리기로 했다면 겨울 공부의 기본 축입니다.'}
+                       : {t:'[고2] 고전문학',p:'1학기 문학 내신에서 가장 까다로운 고전문학을 겨울에 미리 끝내 둡니다. 내신에 특화된 심화 과목입니다.'};
+      if(gaNeed){
+        recs.push({key:true,t:'[고2] 문학개념어',p:'1학기 내신이 문학입니다. 개념어가 안 돼 있으면 심화도 내신도 헛돕니다. 겨울의 1순위입니다.'});
+        simhwa.p='개념어를 다지면서 2순위로 함께 가져가면 좋습니다. '+simhwa.p;
+        recs.push(simhwa);
+      }else{
+        simhwa.key=true;
+        recs.push(simhwa);
+        notes.push({note:true,t:'문학개념어는 다시 들을 필요가 없습니다',p:'개념어가 이미 정리돼 있어, 바로 심화로 갑니다.'});
+      }
+    }
+
+    if(g==='g3'){
+      recs.push({key:true,t:'[고3] 수능정규반',p:'예비 고3의 겨울은 수능으로 직행합니다. 기출과 모의고사를 축으로 수능 국어 전 영역의 틀을 세우는 정규 과정입니다. 금요일 저녁 7시 시작과 토요일 아침 9시 시작 중 한 반을 선택합니다.'});
+      if(answers.g3_grammar==='no'){
+        recs.push({t:'[고3] 현대문법',p:'산본고, 군포고, 용호고는 3학년 1학기 내신이 문법 중심의 ‘화법과 언어’입니다. 내신에도 수능에도 문법이 필수라, 겨울에 큰 틀을 끝내 두어야 합니다.'});
+      }else{
+        notes.push({note:true,t:'문법 수업은 필요하지 않습니다',p:'2학년 2학기에 이미 정리를 끝냈으니, 겨울은 수능 정규반에만 집중하면 됩니다.'});
+      }
+    }
+
+    // 두 강좌까지는 수강료가 같다: 1순위와 2순위는 추천, 3순위부터는 고려로 돌린다.
+    var strongCount=0;
+    recs.forEach(function(r){
+      if(r.soft) return;
+      strongCount++;
+      if(strongCount>2){ r.soft=true; r.key=false; r.p='여유가 되신다면 함께 고려해 보세요. '+r.p; }
+    });
+    var all=recs.concat(notes);
+    var hasStrong=recs.some(function(r){return !r.soft;});
+    var heading = hasStrong ? '우리 아이 겨울, 이 강의를 추천합니다' : '지금 꼭 필요한 겨울 강의는 뚜렷하지 않습니다';
+    var box=el('div','result');
+    box.appendChild(el('div','rh','<div class="rt">이렇게 준비하면 좋습니다</div><h2>'+heading+'</h2>'));
+    if(g==='g1' && answers.g1_gaenyeom==='no' && answers.g1_grammar==='no'){
+      box.appendChild(el('div','callout','고등부 국어를 위해 둘 다 필요하지만, 딱 하나만 들어야 한다면 <b>현대문법</b>을 우선적으로 권장합니다.'));
+    }
+    var i=1;
+    all.forEach(function(r){
+      var c=el('div','rec'+(r.key?' key':'')+(r.note?' note':'')+(r.soft?' soft':''));
+      var num=r.note?'·':(r.soft?'＋':('0'+(i++)));
+      c.innerHTML='<span class="num">'+num+'</span><div><h3>'+r.t+'</h3><p>'+r.p+'</p></div>';
+      box.appendChild(c);
+    });
+    if(recs.length>1){
+      box.appendChild(el('p','fee','두 강좌까지는 수강료가 동일합니다. 1순위와 2순위를 중심으로 잡고, ＋ 표시는 여유에 따라 고려해 보세요.'));
+    }
+    var cta=el('div','cta');
+    cta.innerHTML='<a class="p" id="rk" href="'+KAKAO+'" target="_blank" rel="noopener">상담으로 확인하기</a><a class="s" href="courses.html">겨울 강좌 보기</a>';
+    box.appendChild(cta);
+    var rs=el('button','restart','처음부터 다시 하기');
+    rs.addEventListener('click',function(){ answers={}; path=[]; current='grade'; render(); });
+    box.appendChild(rs);
+    ladder.appendChild(box);
+    var rk=document.getElementById('rk'); if(rk) rk.addEventListener('click',function(){track('finder_kakao_click');});
+  }
+
+  var current='grade';
+  // 검수용: ?go=g2,no,suneung,no 처럼 답을 미리 채워 결과 화면으로 간다.
+  (function(){
+    var m=location.search.match(/[?&]go=([a-z0-9,]+)/);
+    if(!m) return;
+    m[1].split(',').forEach(function(v){
+      if(current==='RESULT') return;
+      var qq=Q[current]; if(!qq) return;
+      var opt=qq.opts.filter(function(o){return o.val===v;})[0];
+      if(!opt) return;
+      answers[current]=v; path.push(current); current=opt.next;
+    });
+  })();
+  document.addEventListener('DOMContentLoaded',function(){ track('finder_open'); render(); });
+  if(document.readyState!=='loading'){ track('finder_open'); render(); }
+})();
+</script>
+</body>
+</html>
